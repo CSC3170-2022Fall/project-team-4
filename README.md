@@ -18,7 +18,7 @@ Our team consists of the following members, listed in the table below (the team 
 
 | Student ID | Student Name | GitHub Account (in Email) |
 | ---------- | ------------ | ------------------------- |
-| 123010245  | 张三 🚩      | sanzhang@gmail.com        |
+| 119010256  | 邵佳琪 🚩      |119010256@link.cuhk.edu.cn        |
 | 123010345  | 李四         | sili@outlook.com          |
 | 123030245  | 王五         | wuwang@foxmail.com        |
 | 123020245  | 陈六         | liuchen@qq.com            |
@@ -30,12 +30,16 @@ Our team consists of the following members, listed in the table below (the team 
 
 After thorough discussion, our team made the choice and the specification information is listed below:
 
-- Our option choice is: **Option 1**
-- Our branch choice is: **Branch 1**
-- The difficulty level is: **Normal**
+- Our option choice is: **Option 3**
+
 
 As for Option 2, our topic background specification can be found in [background-specification.md](background-specification.md).
 
 ## Project Abstract
+This project involves writing a miniature relational database management system (DBMS) thatstores tables of data, where a table consists of some number of labeled columns of information. Our system will include a very simplequery language for extracting information from these tables. For the purposes of this project, we will deal only with very smalldatabases, and therefore will not consider speed and efficiency at all.
+### Optional/Additional Work
 
+To make your work attractive, you may think about interesting things to do by yourself. Here are some examples:   
+Python-based Implementation: Although Python is not a static language, it's a strongly typed language, which makes it possibleto transfer from those Java codes to Python ones. You may use the typing library for type hinting (but remember to switch the Pythonversion that is compatible to the version you are using when you are visiting this typing api webpage).     
+Application with Your Implementation: You may write some small-scale application with the DBMS you just implemented. Forexample, you can try to "re-implement" those work in Assignment 2 -- there would be some expression in your queries that needed tobe changed, as your DBMS is not "as powerful as MySQL", but it's okay as long as you'd make it work.
 <!-- TODO -->
