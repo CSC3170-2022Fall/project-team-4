@@ -6,6 +6,7 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
+// TODO(10Func): createStatement(), loadStatement(), storeStatement(), storeStatement(), printStatement(), selectStatement(), tableDefinition(), selectClause(), conditionClause, condition.
 package db61b;
 
 import java.io.PrintStream;

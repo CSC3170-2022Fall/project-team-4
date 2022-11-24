@@ -5,6 +5,7 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
+// TODO(12Func): Table(String[] columnTitles), columns(), getTitle(int k), findColumn(String title), size(), add(Row row), readTable(String name), writeTable(String name), print(), select*2, equijoin.
 package db61b;
 
 import java.io.BufferedReader;

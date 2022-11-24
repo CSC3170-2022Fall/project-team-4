@@ -5,6 +5,7 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
+// TODO(4Func): Row, size(), get(int k), equals(Object obj).
 package db61b;
 
 import java.util.Arrays;
