@@ -10,9 +10,29 @@ import static org.junit.Assert.*;
 public class TestTemplate {
 
     @Test
-    public void testRow() {
+    public void testRowSize() {
         Row r = new Row(new String[]{"This", "is", "a", "unit", "test!"});
         assertEquals(5, r.size());
+    }
+
+    @Test
+    public void testRowGet() {
+        Row r = new Row(new String[]{"This", "is", "a", "unit", "test!"});
+        assertEquals("This", r.get(0));
+        assertEquals("a", r.get(2));
+        assertEquals(null, r.get(-1));
+        assertEquals(null, r.get(5));
+    }
+
+    @Test
+    public void testRowEqual() {
+        Row r1 = new Row(new String[]{"This", "is", "a", "unit", "test!"});
+        Row r2 = new Row(new String[]{"This", "is", "a", "unit", "test!"});
+        Row r3 = new Row(new String[]{"is", "This", "a", "unit", "test!"});
+        Row r4 = new Row(new String[]{"What", "is", "a", "unit", "test!"});
+        assertEquals(true, r1.equals(r2));
+        assertEquals(false, r1.equals(r3));    
+        assertEquals(false, r1.equals(r4));    
     }
 
     public static void main(String[] args) {

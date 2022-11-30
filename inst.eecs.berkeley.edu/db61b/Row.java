@@ -5,11 +5,13 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
-// TODO(4Func): Row, size(), get(int k), equals(Object obj).
+// TODO(4Func): Row, size()"Done", get(int k)"Done", equals(Object obj)"Done".
 package db61b;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static db61b.Utils.*;
 
 /** A single row of a database.
  *  @author
@@ -52,12 +54,27 @@ class Row {
 
     /** Return the value of my Kth column.  Requires that 0 <= K < size(). */
     String get(int k) {
-        return null; // REPLACE WITH SOLUTION
+        if (k >= 0 && k < _data.length) {
+            return _data[k];
+        }
+        else {
+            return null;    // 在别的Class请求Get时看一下是需要return null还是需要throw error, 测试里需要返回null.
+            // throw error("unexpected input");
+        }
+        // return null; // REPLACE WITH SOLUTION
     }
 
     @Override
     public boolean equals(Object obj) {
-        return false; // REPLACE WITH SOLUTION
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Row other = (Row) obj;
+        if (other.hashCode() == this.hashCode()) {
+            return true;
+        }
+        return false;
+        // return false; // REPLACE WITH SOLUTION
     }
 
     /* NOTE: Whenever you override the .equals() method for a class, you
