@@ -20,9 +20,9 @@ Our team consists of the following members, listed in the table below (the team 
 | ---------- | ------------ | ------------------------- |
 | 119010256  | 邵佳琪 🚩    |119010256@link.cuhk.edu.cn  |
 | 119010022  | 陈诺涵       |flyn_lin@163.com           |
-| 119010434  | 张启航        | 2447086160@qq.com        |
-| 120040023  | Jefferson   |jeffersonjtedjojuwono@gmail.com |
-| 123010249  | 朱九         | jiuzhu@163.com            |
+| 119010434  | 张启航       | 2447086160@qq.com        |
+| 120040023  | Jefferson    |jeffersonjtedjojuwono@gmail.com |
+| 119010297  | 王景仪       | 119010297@link.cuhk.edu.cn |
 | 119010442  | 张天琦       | 119010442@link.cuhk.edu.cn |
 
 
