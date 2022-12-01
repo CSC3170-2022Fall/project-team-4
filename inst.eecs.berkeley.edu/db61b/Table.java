@@ -46,7 +46,7 @@ class Table implements Iterable<Row> {
 
     /** Return the number of columns in this table. */
     public int columns() {
-        // return this._rows[0].size();
+        return this._rows.iterator().next().size();
         // return 0;  // REPLACE WITH SOLUTION
     }
 
@@ -75,7 +75,15 @@ class Table implements Iterable<Row> {
     /** Add ROW to THIS if no equal row already exists.  Return true if anything
      *  was added, false otherwise. */
     public boolean add(Row row) {
-        return false;   // REPLACE WITH SOLUTION
+        Iterator <Row> rows_in_table = this._rows.iterator();
+        while (rows_in_table.hasNext()) {
+            if (rows_in_table.next().hashCode() == row.hashCode()) {
+                return false;
+            }
+        }
+        this._rows.add(row);    // _rows is hashset, maybe we can only use this line.
+        return true;
+        // return false;   // REPLACE WITH SOLUTION
     }
 
     /** Read the contents of the file NAME.db, and return as a Table.
@@ -88,10 +96,19 @@ class Table implements Iterable<Row> {
         try {
             input = new BufferedReader(new FileReader(name + ".db"));
             String header = input.readLine();
+            System.out.println(header);
             if (header == null) {
                 throw error("missing header in DB file");
             }
             String[] columnNames = header.split(",");
+            Row header_row = new Row(columnNames);
+            table.add(header_row);
+            String new_row;
+            while ((new_row = input.readLine()) != null) {
+                String[] new_row_split = new_row.split(",");
+                Row new_row_add = new Row(new_row_split);
+                table.add(new_row_add);
+            }
             // FILL IN
         } catch (FileNotFoundException e) {
             throw error("could not find %s.db", name);
