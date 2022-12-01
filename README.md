@@ -23,6 +23,7 @@ Our team consists of the following members, listed in the table below (the team 
 | 119010434  | 张启航        | 2447086160@qq.com        |
 | 120040023  | Jefferson   |jeffersonjtedjojuwono@gmail.com |
 | 123010249  | 朱九         | jiuzhu@163.com            |
+| 119010442  | 张天琦       | 119010442@link.cuhk.edu.cn |
 
 
 ## Project Specification
