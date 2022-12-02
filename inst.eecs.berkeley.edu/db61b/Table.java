@@ -36,6 +36,7 @@ class Table implements Iterable<Row> {
                 }
             }
         }
+        _rows.add(new Row(columnTitles));
         // FILL IN
     }
 
@@ -101,8 +102,8 @@ class Table implements Iterable<Row> {
                 throw error("missing header in DB file");
             }
             String[] columnNames = header.split(",");
-            Row header_row = new Row(columnNames);
-            table.add(header_row);
+            table = new Table(columnNames);
+            // _rows.add(header_row);
             String new_row;
             while ((new_row = input.readLine()) != null) {
                 String[] new_row_split = new_row.split(",");
@@ -147,6 +148,18 @@ class Table implements Iterable<Row> {
 
     /** Print my contents on the standard output. */
     void print() {
+        Iterator<Row> print_iterator = _rows.iterator();
+        Row row_to_print;
+        while (print_iterator.hasNext()) {
+            row_to_print = print_iterator.next();
+            int row_size = row_to_print.size();
+            for (int i = 0; i < row_size; i = i + 1) {
+                System.out.printf(row_to_print.get(i));
+                System.out.printf("  ");
+            }
+            System.out.println(" ");
+        }
+        // System.out.println();
         // FILL IN
     }
 
