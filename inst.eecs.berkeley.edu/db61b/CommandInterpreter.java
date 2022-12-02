@@ -181,25 +181,32 @@ class CommandInterpreter {
     }
 
     /** Parse and execute an insert statement from the token stream. */
+    // <insert statement> ::= insertinto<table name>values<literal>+,;
     void insertStatement() {
         _input.next("insert");
         _input.next("into");
         Table table = tableName();
         _input.next("values");
-
+        // add literal values
         ArrayList<String> values = new ArrayList<>();
         values.add(literal());
         while (_input.nextIf(",")) {
             values.add(literal());
         }
-
+        // insert into table
         table.add(new Row(values.toArray(new String[values.size()])));
         _input.next(";");
     }
 
     /** Parse and execute a load statement from the token stream. */
+    // <load statement> ::= load <name> ;
     void loadStatement() {
-        // FILL THIS IN
+        _input.next("load");
+        String name = name();
+        Table table = Table.readTable(name);
+        _database.put(name, table);
+        System.out.printf("Loaded %s.db%n", name);
+        _input.next(";");
     }
 
     /** Parse and execute a store statement from the token stream. */
@@ -207,14 +214,21 @@ class CommandInterpreter {
         _input.next("store");
         String name = _input.peek();
         Table table = tableName();
-        // FILL THIS IN
+        table.writeTable(name);
         System.out.printf("Stored %s.db%n", name);
         _input.next(";");
     }
 
     /** Parse and execute a print statement from the token stream. */
     void printStatement() {
-        // FILL THIS IN
+        _input.next("print");
+        String name = name();
+        _input.next(";");
+        Table table = _database.get(name);
+        if (table == null) {
+            throw error("unknown table: %s", name);
+        }
+        table.print();
     }
 
     /** Parse and execute a select statement from the token stream. */
