@@ -24,6 +24,8 @@ STYLEPROG = style61b
 
 JFLAGS = -g -Xlint:unchecked
 
+CLASSPATH = ./lib/junit-4.13.2.jar
+
 # All .java files in this directory.
 SRCS := $(wildcard *.java)
 

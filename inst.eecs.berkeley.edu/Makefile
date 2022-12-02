@@ -29,8 +29,18 @@ default:
 check: default
 	$(MAKE) -C testing check
 
+maincheck: default
+	java db61b.Main
+
+# bcheck:
+# 	java db61b.TestTamplate
+# 
+# This "bcheck" can't work for unknown reason. I can't figure it out.
+# This is caused by the "junit", so you are recommended to directly use the run in the $TestFile$.
+
 style:
 	$(MAKE) -C $(PACKAGE) STYLEPROG=$(STYLEPROG) style
+# This "style" does not work!
 
 # 'make clean' will clean up stuff you can reconstruct.
 clean:
