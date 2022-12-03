@@ -172,22 +172,25 @@ class Table implements Iterable<Row> {
 
     /** Print my contents on the standard output. */
     void print() {
-        Iterator<Row> print_iterator = _rows.iterator();
-        Row row_to_print;
-        // int index = 0;
-        while (print_iterator.hasNext()) {
-            // index = index + 1;
-            // System.out.printf("%d",index);
-            row_to_print = print_iterator.next();
-            int row_size = row_to_print.size();
-            System.out.printf(" ");
-            for (int i = 0; i < row_size; i = i + 1) {
-                System.out.printf(" ");
-                System.out.printf(row_to_print.get(i));
-            }
-            System.out.println("");
-        }
+        // Iterator<Row> print_iterator = _rows.iterator();
+        // Row row_to_print;
+        // // int index = 0;
+        // while (print_iterator.hasNext()) {
+        //     // index = index + 1;
+        //     // System.out.printf("%d",index);
+        //     row_to_print = print_iterator.next();
+        //     int row_size = row_to_print.size();
+        //     System.out.printf(" ");
+        //     for (int i = 0; i < row_size; i = i + 1) {
+        //         System.out.printf(" ");
+        //         System.out.printf(row_to_print.get(i));
+        //     }
+        //     System.out.println("");
+        // }
         // FILL IN
+        for(Row row : this._rows){
+            System.out.println(row.toString());
+        }
     }
 
     /** Return a new Table whose columns are COLUMNNAMES, selected from
