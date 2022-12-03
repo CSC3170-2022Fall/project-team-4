@@ -202,7 +202,11 @@ class Table implements Iterable<Row> {
         for (String col : columnNames){
             newColumns.add(new Column(col, this));
         }
-        for ()
+        for (Row originRow : this){
+            if(Condition.test(conditions, originRow)){
+                result.add(new Row(newColumns, originRow));
+            }
+        }
         return result;
     }
 
@@ -212,6 +216,7 @@ class Table implements Iterable<Row> {
     Table select(Table table2, List<String> columnNames,
                  List<Condition> conditions) {
         Table result = new Table(columnNames);
+        List <Column> newColumns = new ArrayList<Column>();
         // FILL IN
         return result;
     }
