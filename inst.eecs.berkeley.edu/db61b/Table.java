@@ -53,7 +53,8 @@ class Table implements Iterable<Row> {
 
     /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
     public String getTitle(int k) {
-        return null;  // REPLACE WITH SOLUTION
+        return this._rows.iterator().next().get(k);
+        // return null;  // REPLACE WITH SOLUTION
     }
 
     /** Return the number of the column whose title is TITLE, or -1 if
@@ -78,11 +79,13 @@ class Table implements Iterable<Row> {
     public boolean add(Row row) {
         Iterator <Row> rows_in_table = this._rows.iterator();
         while (rows_in_table.hasNext()) {
-            if (rows_in_table.next().hashCode() == row.hashCode()) {
+            if (rows_in_table.next().equals(row)) {
+                System.out.println("Warning: Have same row already in the Table!");
                 return false;
             }
         }
         this._rows.add(row);    // _rows is hashset, maybe we can only use this line.
+        // updata 2022.12.03: Change _rows to ArrayList to having a order output. So we need to check if have the same input.
         return true;
         // return false;   // REPLACE WITH SOLUTION
     }
@@ -94,6 +97,7 @@ class Table implements Iterable<Row> {
         Table table;
         input = null;
         table = null;
+        int col_num;
         try {
             input = new BufferedReader(new FileReader(name + ".db"));
             String header = input.readLine();
@@ -102,12 +106,17 @@ class Table implements Iterable<Row> {
                 throw error("missing header in DB file");
             }
             String[] columnNames = header.split(",");
+            col_num = columnNames.length;
+            // System.out.printf("%d", col_num);
             table = new Table(columnNames);
-            // _rows.add(header_row);
             String new_row;
             while ((new_row = input.readLine()) != null) {
                 String[] new_row_split = new_row.split(",");
+                if (new_row_split.length != col_num) {
+                    throw error("data with wrong format in the %s.db", name);
+                }
                 Row new_row_add = new Row(new_row_split);
+                // table._rows.add(new_row_add);    // This line can't delete same row in .db file
                 table.add(new_row_add);
             }
             // FILL IN
@@ -150,16 +159,19 @@ class Table implements Iterable<Row> {
     void print() {
         Iterator<Row> print_iterator = _rows.iterator();
         Row row_to_print;
+        // int index = 0;
         while (print_iterator.hasNext()) {
+            // index = index + 1;
+            // System.out.printf("%d",index);
             row_to_print = print_iterator.next();
             int row_size = row_to_print.size();
+            System.out.printf(" ");
             for (int i = 0; i < row_size; i = i + 1) {
+                System.out.printf(" ");
                 System.out.printf(row_to_print.get(i));
-                System.out.printf("  ");
             }
-            System.out.println(" ");
+            System.out.println("");
         }
-        // System.out.println();
         // FILL IN
     }
 
@@ -193,7 +205,7 @@ class Table implements Iterable<Row> {
     }
 
     /** My rows. */
-    private HashSet<Row> _rows = new HashSet<>();
+    private List<Row> _rows = new ArrayList<Row>();
     // FILL IN
 }
 

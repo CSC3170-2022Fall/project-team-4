@@ -11,8 +11,29 @@ public class TableTest {
 
     @Test
     public void testTableRead() {
-        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/enrolled");
+        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
         t.print();
+        // Make sure you terminal start from "/project-team-4"
+        // Or you will can not find the file from relative path.
+    }
+
+    @Test
+    public void testTableColumn() {
+        System.out.println(System.getProperty("user.dir"));
+        String test = System.getProperty("user.dir");
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(System.getProperty("user.dir"));
+        // Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+        // t.print();
+        // assertEquals(3, t.columns());
+        // Make sure you terminal start from "/project-team-4"
+        // Or you will can not find the file from relative path.
+    }
+
+    @Test
+    public void testTableGetTitle() {
+        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+        // t.print();
         // Make sure you terminal start from "/project-team-4"
         // Or you will can not find the file from relative path.
     }
