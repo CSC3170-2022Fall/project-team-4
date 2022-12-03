@@ -36,6 +36,7 @@ class Table implements Iterable<Row> {
                 }
             }
         }
+        _columTitles = columnTitles;
         _rows.add(new Row(columnTitles));
         // FILL IN
     }
@@ -47,25 +48,39 @@ class Table implements Iterable<Row> {
 
     /** Return the number of columns in this table. */
     public int columns() {
-        return this._rows.iterator().next().size();
+        //return this._rows.iterator().next().size();
+        return  _columTitles.length;
         // return 0;  // REPLACE WITH SOLUTION
     }
 
     /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
     public String getTitle(int k) {
-        return this._rows.iterator().next().get(k);
+        //return this._rows.iterator().next().get(k);
+        try{
+            return _columTitles[k];
+        } 
+        catch(Exception e){
+            throw error("Inproper column length:" + k);
+        }
         // return null;  // REPLACE WITH SOLUTION
     }
 
     /** Return the number of the column whose title is TITLE, or -1 if
      *  there isn't one. */
     public int findColumn(String title) {
-        return -1;  // REPLACE WITH SOLUTION
+        for(int i = _columTitles.length - 1; i >= 1; i -= 1) {
+            if (_columTitles[i] == title){
+                return i;
+            }
+        }
+        return -1;
+        //return -1;  // REPLACE WITH SOLUTION
     }
 
     /** Return the number of Rows in this table. */
     public int size() {
-        return 0;  // REPLACE WITH SOLUTION
+        return this._rows.size();
+        //return 0;  // REPLACE WITH SOLUTION
     }
 
     /** Returns an iterator that returns my rows in an unspecfied order. */
@@ -207,5 +222,6 @@ class Table implements Iterable<Row> {
     /** My rows. */
     private List<Row> _rows = new ArrayList<Row>();
     // FILL IN
+    private String[] _columTitles;
 }
 
