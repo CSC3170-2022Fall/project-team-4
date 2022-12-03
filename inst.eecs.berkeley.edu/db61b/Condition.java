@@ -39,29 +39,82 @@ class Condition {
      *  my columns are selected, returns the result of performing the test I
      *  denote. */
     boolean test(Row... rows) {
+        Double value_left, value_right;
         for (Row singlr_row : rows) {
             switch (_relation) {
                 case "<":
-                    // String1: singlr_row.get(_col1.getColumn()
-                    // String2: singlr_row.get(_col2.getColumn()
-                    if (singlr_row.get(_col1.getColumn())) {
-                        
+                    // String1: singlr_row.get(_col1.getColumn())
+                    // String2: singlr_row.get(_col2.getColumn())
+                    value_left = Double.parseDouble(singlr_row.get(_col1.getColumn()));
+                    if (_col2 == null) {
+                        value_right = Double.parseDouble(_val2);
+                    } else {
+                        value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
+                    }
+                    if (value_left >= value_right) {
+                        return false;
                     }
                     break;
                 case ">":
+                    value_left = Double.parseDouble(singlr_row.get(_col1.getColumn()));
+                    if (_col2 == null) {
+                        value_right = Double.parseDouble(_val2);
+                    } else {
+                        value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
+                    }
+                    if (value_left <= value_right) {
+                        return false;
+                    }
                     break;
                 case "<=":
+                    value_left = Double.parseDouble(singlr_row.get(_col1.getColumn()));
+                    if (_col2 == null) {
+                        value_right = Double.parseDouble(_val2);
+                    } else {
+                        value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
+                    }
+                    if (value_left > value_right) {
+                        return false;
+                    }
                     break;
                 case ">=":
+                    value_left = Double.parseDouble(singlr_row.get(_col1.getColumn()));
+                    if (_col2 == null) {
+                        value_right = Double.parseDouble(_val2);
+                    } else {
+                        value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
+                    }
+                    if (value_left < value_right) {
+                        return false;
+                    }
                     break;
                 case "=":
+                    if (_col2 == null) {
+                        if (!singlr_row.get(_col1.getColumn()).equals(_val2)) {
+                            return false;
+                        }
+                    } else {
+                        if (!singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
+                            return false;
+                        }
+                    }
                     break;
                 case "!=":
+                    if (_col2 == null) {
+                        if (singlr_row.get(_col1.getColumn()).equals(_val2)) {
+                            return false;
+                        }
+                    } else {
+                        if (singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
+                            return false;
+                        }
+                    }
                     break;
             }
         }
-        // REPLACE WITH SOLUTION
-        return false;
+        return true;
+        // // REPLACE WITH SOLUTION
+        // return false;
     }
 
     /** Return true iff ROWS satisfies all CONDITIONS. */
