@@ -27,6 +27,10 @@ class Column {
         return _name;
     }
 
+    int getColumn() {
+        return _column;
+    }
+
 
     /** Returns the value of this Column from ROWS[_table]. Assumes that
      *  ROWS[_table] is from the same table that was provided to the

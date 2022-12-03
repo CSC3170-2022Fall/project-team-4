@@ -18,6 +18,9 @@ class Condition {
      *  are column designators. and RELATION is one of the
      *  strings "<", ">", "<=", ">=", "=", or "!=". */
     Condition(Column col1, String relation, Column col2) {
+        _relation = relation;
+        _col1 = col1;
+        _col2 = col2;
         // YOUR CODE HERE
     }
 
@@ -29,12 +32,34 @@ class Condition {
     Condition(Column col1, String relation, String val2) {
         this(col1, relation, (Column) null);
         _val2 = val2;
+        _relation = relation;
     }
 
     /** Assuming that ROWS are rows from the respective tables from which
      *  my columns are selected, returns the result of performing the test I
      *  denote. */
     boolean test(Row... rows) {
+        for (Row singlr_row : rows) {
+            switch (_relation) {
+                case "<":
+                    // String1: singlr_row.get(_col1.getColumn()
+                    // String2: singlr_row.get(_col2.getColumn()
+                    if (singlr_row.get(_col1.getColumn())) {
+                        
+                    }
+                    break;
+                case ">":
+                    break;
+                case "<=":
+                    break;
+                case ">=":
+                    break;
+                case "=":
+                    break;
+                case "!=":
+                    break;
+            }
+        }
         // REPLACE WITH SOLUTION
         return false;
     }
@@ -55,4 +80,5 @@ class Condition {
     /** Second operand, if literal (otherwise null). */
     private String _val2;
     // ADD ADDITIONAL FIELDS HERE
+    private String _relation;
 }
