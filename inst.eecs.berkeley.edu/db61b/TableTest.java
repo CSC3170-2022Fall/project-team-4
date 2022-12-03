@@ -7,6 +7,8 @@ import org.junit.runner.notification.Failure;
 
 import static org.junit.Assert.*;
 
+import java.util.*;
+
 public class TableTest {
 
     @Test
@@ -38,6 +40,22 @@ public class TableTest {
         // Or you will can not find the file from relative path.
     }
     
+    @Test
+    public void testTableSimpleSelect(){
+        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+        List<String> columnames = new ArrayList<>();
+        List<String> temp = new ArrayList<>();
+        columnames.add("CCN");
+        columnames.add("Grade");
+        List<Condition> condition = new ArrayList<>();
+
+        Table t2 = t.select(columnames, condition); 
+        //Still error in adding the rows (most likely because rows(columns, rows..row) has not been implemented)
+        t2.print();
+        assertEquals(2, t2.columns());
+
+
+     }
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(TableTest.class);
         for (Failure failure : result.getFailures()) {
