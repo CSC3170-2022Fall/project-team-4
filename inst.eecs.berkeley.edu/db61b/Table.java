@@ -217,6 +217,28 @@ class Table implements Iterable<Row> {
                  List<Condition> conditions) {
         Table result = new Table(columnNames);
         List <Column> newColumns = new ArrayList<Column>();
+        List <Column> commonColumns1 = new ArrayList<Column>();
+        List <Column> commonColumns2 = new ArrayList<Column>();
+        for (String col : columnNames){
+            newColumns.add(new Column(col, this));
+        }
+        for (String colName1 : _columTitles){
+            for (String colName2 : table2._columTitles){
+                if (colName1.equals(colName2)){
+                    commonColumns1.add(new Column(colName1, this));
+                    commonColumns2.add(new Column(colName2, table2));
+                }
+            }
+        }
+        for (Row originRow : this){
+            for (Row secondRow : table2){
+                if(Condition.test(conditions, originRow, secondRow)){
+                    if (equijoin(commonColumns1, commonColumns2, secondRow, originRow)){
+                        result.add(new Row(newColumns, originRow, secondRow));
+                    }
+                }
+            }
+        }
         // FILL IN
         return result;
     }
