@@ -11,6 +11,7 @@ package db61b;
 
 import java.io.PrintStream;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -233,7 +234,10 @@ class CommandInterpreter {
 
     /** Parse and execute a select statement from the token stream. */
     void selectStatement() {
-        // FILL THIS IN
+        _input.next("select");
+        Table table = selectClause();
+        table.print();
+        _input.next(";");
     }
 
     /** Parse and execute a table definition, returning the specified
@@ -253,7 +257,19 @@ class CommandInterpreter {
     /** Parse and execute a select clause from the token stream, returning the
      *  resulting table. */
     Table selectClause() {
-        return null;         // REPLACE WITH SOLUTION
+        List<String> columnames = new ArrayList<>();
+        do {
+            columnames.add(columnName());
+        } while (_input.nextIf(","));
+        //System.out.println(columnames);
+
+        _input.next("from");
+        Table t = tableName();
+
+        List<Condition> placeholder = new ArrayList<>();
+        return t.select(columnames,placeholder);
+
+        //return null;         // REPLACE WITH SOLUTION
 
     }
 
