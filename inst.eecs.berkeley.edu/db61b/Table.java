@@ -198,6 +198,11 @@ class Table implements Iterable<Row> {
     Table select(List<String> columnNames, List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
+        List <Column> newColumns = new ArrayList<Column>();
+        for (String col : columnNames){
+            newColumns.add(new Column(col, this));
+        }
+        for ()
         return result;
     }
 
