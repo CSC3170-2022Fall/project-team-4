@@ -292,10 +292,11 @@ class CommandInterpreter {
     Table tableName() {
         String name = name();
         Table table = _database.get(name);
-        table.setName(name);
         if (table == null) {
             throw error("unknown table: %s", name);
         }
+        table.setName(name);
+        
         return table;
     }
 
