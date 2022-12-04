@@ -5,33 +5,33 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
-// TODO: Much to define!
-package db61b;
 
-// FILL IN (WITH IMPORTS)?
+package db61b;
+import java.util.HashMap;
+
 
 /** A collection of Tables, indexed by name.
  *  @author */
 class Database {
     /** An empty database. */
     public Database() {
-        // FILL IN
+        container = new HashMap<>();
     }
-
+    
     /** Return the Table whose name is NAME stored in this database, or null
      *  if there is no such table. */
     public Table get(String name) {
-        return null;             // REPLACE WITH SOLUTION
+        return container.get(name);   
     }
-
+    
     /** Set or replace the table named NAME in THIS to TABLE.  TABLE and
      *  NAME must not be null, and NAME must be a valid name for a table. */
     public void put(String name, Table table) {
         if (name == null || table == null) {
             throw new IllegalArgumentException("null argument");
         }
-        // FILL IN
+        container.put(name, table);
     }
-
-    // FILL IN?
+    
+    private HashMap<String, Table> container;
 }
