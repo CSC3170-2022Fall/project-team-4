@@ -182,7 +182,7 @@ class CommandInterpreter {
     }
 
     /** Parse and execute an insert statement from the token stream. */
-    // <insert statement> ::= insertinto<table name>values<literal>+,;
+    // <insert statement> ::= insert into<table name>values<literal>+,;
     void insertStatement() {
         _input.next("insert");
         _input.next("into");
@@ -191,12 +191,14 @@ class CommandInterpreter {
         // add literal values
         ArrayList<String> values = new ArrayList<>();
         values.add(literal());
+        System.out.println(values);
         while (_input.nextIf(",")) {
             values.add(literal());
         }
         // insert into table
         table.add(new Row(values.toArray(new String[values.size()])));
         _input.next(";");
+        System.out.printf("Inserted %d row into %s.%n", 1, table.getName());
     }
 
     /** Parse and execute a load statement from the token stream. */
@@ -290,6 +292,7 @@ class CommandInterpreter {
     Table tableName() {
         String name = name();
         Table table = _database.get(name);
+        table.setName(name);
         if (table == null) {
             throw error("unknown table: %s", name);
         }

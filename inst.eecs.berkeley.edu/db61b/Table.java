@@ -25,6 +25,7 @@ import static db61b.Utils.*;
  *  @author P. N. Hilfinger
  */
 class Table implements Iterable<Row> {
+    private String _name;
     /** A new Table whose columns are given by COLUMNTITLES, which may
      *  not contain dupliace names. */
     Table(String[] columnTitles) {
@@ -51,6 +52,15 @@ class Table implements Iterable<Row> {
         //return this._rows.iterator().next().size();
         return  _columTitles.length;
         // return 0;  // REPLACE WITH SOLUTION
+    }
+
+    // Set table name 
+    public void setName(String name) {
+        _name = name + ".db";
+    }
+    // get table name
+    public String getName() {
+        return _name;
     }
 
     /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
