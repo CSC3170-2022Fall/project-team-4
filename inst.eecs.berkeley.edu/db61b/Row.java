@@ -48,6 +48,9 @@ class Row {
 
     /** Return my number of columns. */
     int size() {
+        if(this._data == null){
+            return 0;
+        }
         return _data.length;
         // return 0;  // REPLACE WITH SOLUTION
     }
