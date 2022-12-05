@@ -168,7 +168,7 @@ class CommandInterpreter {
         _input.next("table");
         String name = name();
         Table table = tableDefinition();
-        // FILL IN CODE TO EXECUTE THE STATEMENT
+        _database.put(name, table);
         _input.next(";");
     }
 
@@ -253,11 +253,17 @@ class CommandInterpreter {
     Table tableDefinition() {
         Table table;
         if (_input.nextIf("(")) {
-            // REPLACE WITH SOLUTION
-            table = null;
+            List<String> columns = new ArrayList<String>();
+            String column = columnName();
+            columns.add(column);
+            while (_input.nextIf(",")) {
+            	columns.add(columnName());
+            }
+            table = new Table(columns);
+            _input.next(")");
         } else {
-            // REPLACE WITH SOLUTION
-            table = null;
+            _input.next("as");
+            table = selectClause();
         }
         return table;
     }
@@ -265,19 +271,26 @@ class CommandInterpreter {
     /** Parse and execute a select clause from the token stream, returning the
      *  resulting table. */
     Table selectClause() {
-        List<String> columnames = new ArrayList<>();
-        do {
-            columnames.add(columnName());
-        } while (_input.nextIf(","));
-        //System.out.println(columnames);
-
+    	List<String> columnNames = new ArrayList<String>();
+        columnNames.add(columnName());
+        while (_input.nextIf(",")) {
+        	columnNames.add(columnName());
+        }
+        System.out.println("SELECT:" + " " + columnNames);
         _input.next("from");
-        Table t = tableName();
-
-        List<Condition> placeholder = new ArrayList<>();
-        return t.select(columnames,placeholder);
-
-        //return null;         // REPLACE WITH SOLUTION
+        Table table1 = tableName();
+        Table table2 = null;
+        if (_input.nextIf(",")) {
+        	table2 = tableName();
+        }
+        Table result;
+        if (table2 == null) {
+        	result = table1.select(columnNames, conditionClause(table1));
+        }
+        else {
+        	result = table1.select(table2, columnNames, conditionClause(table1, table2));
+        }
+        return result;
 
     }
 
