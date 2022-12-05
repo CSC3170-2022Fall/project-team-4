@@ -57,3 +57,4 @@ Application with Your Implementation: You may write some small-scale application
 
 ## Abstract
 - Use the template given by UCB to implement a database management system
+- Reimplement assignment 2 using this database system
