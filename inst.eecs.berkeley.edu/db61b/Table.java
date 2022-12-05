@@ -102,6 +102,9 @@ class Table implements Iterable<Row> {
     /** Add ROW to THIS if no equal row already exists.  Return true if anything
      *  was added, false otherwise. */
     public boolean add(Row row) {
+        if (row.size() != columns()) {
+            throw error("row size mismatch");
+        }
         Iterator <Row> rows_in_table = this._rows.iterator();
         while (rows_in_table.hasNext()) {
             if (rows_in_table.next().equals(row)) {
