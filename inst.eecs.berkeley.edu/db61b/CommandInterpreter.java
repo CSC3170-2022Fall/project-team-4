@@ -191,14 +191,20 @@ class CommandInterpreter {
         // add literal values
         ArrayList<String> values = new ArrayList<>();
         values.add(literal());
-        System.out.println(values);
         while (_input.nextIf(",")) {
             values.add(literal());
         }
         // insert into table
-        table.add(new Row(values.toArray(new String[values.size()])));
+        Row row = new Row(values.toArray(new String[values.size()]));
+        System.out.printf("inserting %s into %s%n", values, table.getName());
+        boolean success = table.add(row);
         _input.next(";");
-        System.out.printf("Inserted %d row into %s.%n", 1, table.getName());
+        if (!success) {
+            throw error("insertion failed");
+        }
+        else {
+            System.out.printf("Inserted %d row into %s.%n", 1, table.getName());
+        }
     }
 
     /** Parse and execute a load statement from the token stream. */

@@ -12,5 +12,8 @@ This part implements the `insert` and `load` operations.
 - The `insert` operation inserts a new record into the database.  The `insertStatement` operation is implemented in the `insert` function in `/db61b/CommandInterpreter.java`. 
 - The `load` operation loads a record from the database.The `load` operation is implemented in the `loadStatement` function in `/db61b/CommandInterpreter.java`.
 
-> TODO: TEST, AFTER STEP 5 COMPLETE
-
+### Test
+**test.in**
+![testin](./screenshot/load_insert_testin.png)
+**test.out**
+![testout](./screenshot/load_insert_testout.png)
