@@ -53,3 +53,7 @@ Application with Your Implementation: You may write some small-scale application
 ## Tasks
 - [ ] TODO ...
 <!-- TODO -->
+
+
+## Abstract
+- Use the template given by UCB to implement a database management system
