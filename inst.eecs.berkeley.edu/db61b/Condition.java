@@ -51,8 +51,8 @@ class Condition {
                     } else {
                         value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
                     }
-                    if (value_left >= value_right) {
-                        return false;
+                    if (value_left < value_right) {
+                        return true;
                     }
                     break;
                 case ">":
@@ -62,8 +62,8 @@ class Condition {
                     } else {
                         value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
                     }
-                    if (value_left <= value_right) {
-                        return false;
+                    if (value_left > value_right) {
+                        return true;
                     }
                     break;
                 case "<=":
@@ -73,8 +73,8 @@ class Condition {
                     } else {
                         value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
                     }
-                    if (value_left > value_right) {
-                        return false;
+                    if (value_left <= value_right) {
+                        return true;
                     }
                     break;
                 case ">=":
@@ -84,35 +84,35 @@ class Condition {
                     } else {
                         value_right = Double.parseDouble(singlr_row.get(_col2.getColumn()));
                     }
-                    if (value_left < value_right) {
-                        return false;
+                    if (value_left >= value_right) {
+                        return true;
                     }
                     break;
                 case "=":
                     if (_col2 == null) {
-                        if (!singlr_row.get(_col1.getColumn()).equals(_val2)) {
-                            return false;
+                        if (singlr_row.get(_col1.getColumn()).equals(_val2)) {
+                            return true;
                         }
                     } else {
-                        if (!singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
-                            return false;
+                        if (singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
+                            return true;
                         }
                     }
                     break;
                 case "!=":
                     if (_col2 == null) {
-                        if (singlr_row.get(_col1.getColumn()).equals(_val2)) {
-                            return false;
+                        if (!singlr_row.get(_col1.getColumn()).equals(_val2)) {
+                            return true;
                         }
                     } else {
-                        if (singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
-                            return false;
+                        if (!singlr_row.get(_col1.getColumn()).equals(singlr_row.get(_col2.getColumn()))) {
+                            return true;
                         }
                     }
                     break;
             }
         }
-        return true;
+        return false;
         // // REPLACE WITH SOLUTION
         // return false;
     }

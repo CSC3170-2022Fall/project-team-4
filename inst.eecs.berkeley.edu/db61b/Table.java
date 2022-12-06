@@ -90,6 +90,7 @@ class Table implements Iterable<Row> {
     /** Return the number of Rows in this table. */
     public int size() {
         return this._rows.size();
+        // TODO: 这里算上了标题,是不是需要减一?
         //return 0;  // REPLACE WITH SOLUTION
     }
 
@@ -129,7 +130,7 @@ class Table implements Iterable<Row> {
         try {
             input = new BufferedReader(new FileReader(name + ".db"));
             String header = input.readLine();
-            System.out.println(header);
+            // System.out.println(header);
             if (header == null) {
                 throw error("missing header in DB file");
             }
@@ -174,6 +175,11 @@ class Table implements Iterable<Row> {
             sep = "";
             output = new PrintStream(name + ".db");
             // FILL THIS IN
+            // Row title = new Row(_columTitles);
+            // output.println(title.);
+            // for (Row r : this._rows) {
+            //     output.printf();
+            // }
         } catch (IOException e) {
             throw error("trouble writing to %s.db", name);
         } finally {
