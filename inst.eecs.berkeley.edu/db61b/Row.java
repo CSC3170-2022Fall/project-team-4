@@ -44,6 +44,10 @@ class Row {
      */
     Row(List<Column> columns, Row... rows) {
         // FILL IN
+        _data = new String[columns.size()];
+        for (int i = 0; i < columns.size(); i++) {
+            _data[i] = columns.get(i).getFrom(rows);
+        }
     }
 
     /** Return my number of columns. */

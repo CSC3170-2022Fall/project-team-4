@@ -175,11 +175,24 @@ class Table implements Iterable<Row> {
             sep = "";
             output = new PrintStream(name + ".db");
             // FILL THIS IN
-            // Row title = new Row(_columTitles);
-            // output.println(title.);
-            // for (Row r : this._rows) {
-            //     output.printf();
+            Row title = new Row(_columTitles);
+            int title_size = title.size();
+            // output.printf(title.get(0));
+            // for (int i = 1; i < title_size; i++) {
+            //     output.printf(",");
+            //     output.printf(title.get(i));
             // }
+            // output.println("");
+            // If title only be stored in the _columnTitles, we will need these commented lines.
+
+            for (Row r : this._rows) {
+                output.printf(r.get(0));
+                for (int i = 1; i < title_size; i++) {
+                    output.printf(",");
+                    output.printf(r.get(i));
+                }
+                output.println("");
+            }
         } catch (IOException e) {
             throw error("trouble writing to %s.db", name);
         } finally {
@@ -191,21 +204,21 @@ class Table implements Iterable<Row> {
 
     /** Print my contents on the standard output. */
     void print() {
-        // Iterator<Row> print_iterator = _rows.iterator();
-        // Row row_to_print;
-        // // int index = 0;
-        // while (print_iterator.hasNext()) {
-        //     // index = index + 1;
-        //     // System.out.printf("%d",index);
-        //     row_to_print = print_iterator.next();
-        //     int row_size = row_to_print.size();
-        //     System.out.printf(" ");
-        //     for (int i = 0; i < row_size; i = i + 1) {
-        //         System.out.printf(" ");
-        //         System.out.printf(row_to_print.get(i));
-        //     }
-        //     System.out.println("");
-        // }
+        Iterator<Row> print_iterator = _rows.iterator();
+        Row row_to_print;
+        // int index = 0;
+        while (print_iterator.hasNext()) {
+            // index = index + 1;
+            // System.out.printf("%d",index);
+            row_to_print = print_iterator.next();
+            int row_size = row_to_print.size();
+            System.out.printf(" ");
+            for (int i = 0; i < row_size; i = i + 1) {
+                System.out.printf(" ");
+                System.out.printf(row_to_print.get(i));
+            }
+            System.out.println("");
+        }
         // FILL IN
         for(Row row : this._rows){
             System.out.println(row.toString());
