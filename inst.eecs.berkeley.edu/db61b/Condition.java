@@ -127,6 +127,11 @@ class Condition {
         return true;
     }
 
+    void print_cond() {
+        System.out.printf(_relation);
+        System.out.println(_val2);
+    }
+
     /** The operands of this condition.  _col2 is null if the second operand
      *  is a literal. */
     private Column _col1, _col2;

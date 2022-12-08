@@ -234,7 +234,8 @@ class Table implements Iterable<Row> {
         for (String col : columnNames){
             newColumns.add(new Column(col, this));
         }
-        for (Row originRow : this){
+        // for (Row originRow : this._rows){
+        for (Row originRow : _rows.subList(1, _rows.size())){
             if(Condition.test(conditions, originRow)){
                 result.add(new Row(newColumns, originRow));
             }

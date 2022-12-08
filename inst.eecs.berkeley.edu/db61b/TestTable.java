@@ -63,25 +63,74 @@ public class TestTable {
     public void testTableSize() {
         System.out.println("testTableSize()");
         Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
-        assertEquals(6, t.size());
+        assertEquals(7, t.size());
+        // TODO: title need to be counted in the size or not?
         // Make sure you terminal start from "/project-team-4"
         // Or you will can not find the file from relative path.
     }
 
+    // @Test
+    // public void testTableSimpleSelect(){
+    //     System.out.println("testTableSimpleSelect()");
+    //     Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+    //     List<String> columnames = new ArrayList<>();
+    //     List<String> temp = new ArrayList<>();
+    //     columnames.add("CCN");
+    //     columnames.add("Grade");
+    //     List<Condition> condition = new ArrayList<>();
+
+    //     Table t2 = t.select(columnames, condition); 
+    //     //Still error in adding the rows (most likely because rows(columns, rows..row) has not been implemented)
+    //     t2.print();
+    //     assertEquals(2, t2.columns());
+    // }
+
     @Test
-    public void testTableSimpleSelect(){
-        System.out.println("testTableSimpleSelect()");
+    public void testTableSelect_1Table(){
+        System.out.println("testTableSelect_1Table()");
         Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+
+        Column c1 = new Column("SID", t);
+        Column c2 = new Column("Grade", t);
+        Condition con1 = new Condition(c1, ">=", "333");
+        Condition con2 = new Condition(c1, "<", "555");
+        Condition con3 = new Condition(c2, "<=", "8");
+        List<Condition> cons = new ArrayList<Condition>();
+        cons.add(con1);
+        cons.add(con2);
+        cons.add(con3);
+
         List<String> columnames = new ArrayList<>();
-        List<String> temp = new ArrayList<>();
         columnames.add("CCN");
         columnames.add("Grade");
-        List<Condition> condition = new ArrayList<>();
 
-        Table t2 = t.select(columnames, condition); 
-        //Still error in adding the rows (most likely because rows(columns, rows..row) has not been implemented)
+        Table t2 = t.select(columnames, cons);
         t2.print();
-        assertEquals(2, t2.columns());
+    }
+
+    @Test
+    public void testTableSelect_Multi_Table(){
+        // Test not pass.
+        System.out.println("testTableSelect_Multi_Table()");
+        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+        Table t2 = Table.readTable("inst.eecs.berkeley.edu/testing/schedule");
+
+        Column c1 = new Column("SID", t);
+        Column c2 = new Column("Grade", t);
+        Condition con1 = new Condition(c1, ">=", "333");
+        Condition con2 = new Condition(c1, "<", "555");
+        Condition con3 = new Condition(c2, "<=", "8");
+        List<Condition> cons = new ArrayList<Condition>();
+        cons.add(con1);
+        cons.add(con2);
+        cons.add(con3);
+
+        List<String> columnames = new ArrayList<>();
+        columnames.add("CCN");
+        columnames.add("Grade");
+
+        Table t_out = t.select(t2, columnames, cons);
+        t_out.print();
     }
 
     public static void main(String[] args) {
