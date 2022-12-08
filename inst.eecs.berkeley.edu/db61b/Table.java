@@ -283,7 +283,12 @@ class Table implements Iterable<Row> {
      *  from those tables. */
     private static boolean equijoin(List<Column> common1, List<Column> common2,
                                     Row row1, Row row2) {
-        return true; // REPLACE WITH SOLUTION
+        for (int i = common1.size(); i >= 0; i--) {
+            if(common1.get(i).getFrom(row1).equals(common2.get(i).getFrom(row2))){
+                return true;
+            }
+        }
+        return false; // REPLACE WITH SOLUTION
     }
 
     /** My rows. */
