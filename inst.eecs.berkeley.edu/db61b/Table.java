@@ -290,11 +290,11 @@ class Table implements Iterable<Row> {
     private static boolean equijoin(List<Column> common1, List<Column> common2,
                                     Row row1, Row row2) {
         for (int i = common1.size()-1; i >= 0; i--) {
-            if(common1.get(i).getFrom(row1).equals(common2.get(i).getFrom(row2))){
-                return true;
+            if(!common1.get(i).getFrom(row1).equals(common2.get(i).getFrom(row2))){
+                return false;
             }
         }
-        return false; // REPLACE WITH SOLUTION
+        return true; // REPLACE WITH SOLUTION
     }
 
     /** My rows. */
