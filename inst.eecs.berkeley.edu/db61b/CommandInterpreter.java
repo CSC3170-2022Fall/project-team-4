@@ -156,6 +156,9 @@ class CommandInterpreter {
         case "store":
             storeStatement();
             break;
+        case "innerjoin":
+            innerJoin();
+            break;
         default:
             throw error("unrecognizable command");
         }
@@ -170,6 +173,21 @@ class CommandInterpreter {
         Table table = tableDefinition();
         _database.put(name, table);
         _input.next(";");
+    }
+
+    void innerJoin(){
+        _input.next("innerjoin");
+        Table t1 = tableName();
+        _input.next(",");
+        Table t2 = tableName();
+        _input.next("as");
+        String name = name();
+        Table t3 = t1.innerjoin(t2);
+        _database.put(name, t3);
+        System.out.println("Succcesfully joined them ");
+        _input.next(";");
+
+
     }
 
     /** Parse and execute an exit or quit statement. Actually does nothing

@@ -306,6 +306,42 @@ class Table implements Iterable<Row> {
                     return result;
     }
 
+    Table innerjoin(Table table2){
+        ArrayList<String> all_columns = new ArrayList<String>();
+        ArrayList<Column> newColumns = new ArrayList<Column>(); // join columns
+        ArrayList<Column> commonColumns1 = new ArrayList<Column>();
+        ArrayList<Column> commonColumns2 = new ArrayList<Column>();
+
+        for (String colTitle : this._columTitles){
+            if (contain(table2.getTitles(),colTitle)){
+                commonColumns1.add(new Column(colTitle, this));
+                commonColumns2.add(new Column(colTitle, table2));
+            }
+        }
+        for(String column_titles:this._columTitles){
+            all_columns.add(column_titles);
+        }
+        for(String column_title:table2.getTitles()){
+            if(!all_columns.contains(column_title)){
+                all_columns.add(column_title);
+            }
+        }
+
+        Table result = new Table(all_columns);
+
+        for (String name : all_columns) {
+            newColumns.add(new Column(name, this, table2));
+        }
+        for (Row row1 : this) {
+            for (Row row2 : table2) {
+                if (equijoin(commonColumns1, commonColumns2, row1, row2)) {
+                    result.add(new Row(newColumns, row1, row2));
+                }
+            }
+        }
+        return result;
+    }
+
     /** Return true if the columns COMMON1 from ROW1 and COMMON2 from
      *  ROW2 all have identical values.  Assumes that COMMON1 and
      *  COMMON2 have the same number of elements and the same names,
