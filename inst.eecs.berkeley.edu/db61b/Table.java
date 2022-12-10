@@ -140,7 +140,7 @@ class Table implements Iterable<Row> {
         // String dir = System.getProperty("user.dir");
         // //System.out.println("this is the dir" + dir);
         // // join dir with /testing
-        // String path = dir + "/testing/" + name + ".db";
+        // String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
 
         String path = name + ".db";
         try {
