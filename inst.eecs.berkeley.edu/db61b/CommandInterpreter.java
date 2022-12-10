@@ -263,6 +263,7 @@ class CommandInterpreter {
             _input.next(")");
         } else {
             _input.next("as");
+            _input.next("select");
             table = selectClause();
         }
         return table;
@@ -331,13 +332,12 @@ class CommandInterpreter {
      *  or more Conditions. */
     ArrayList<Condition> conditionClause(Table... tables) {
         ArrayList<Condition> result = new ArrayList<Condition>();
-        if (_input.peek().equals(";")) {
-            return null;
-        }
-        _input.next("where");
-        do {
+        if (_input.nextIf("where")) {
             result.add(condition(tables));
-        } while (_input.nextIf("and"));
+            while (_input.nextIf("and")) {
+                result.add(condition(tables));
+            }
+        }
         return result;
     }
 
@@ -350,8 +350,8 @@ class CommandInterpreter {
             String val2 = literal();
             return new Condition(col1, relation, val2);
         } else {
-            Column entry2 = new Column(columnName(), tables);
-            return new Condition(col1, relation, entry2);
+            Column val2 = new Column(columnName(), tables);
+            return new Condition(col1, relation, val2);
         }    
     }
 

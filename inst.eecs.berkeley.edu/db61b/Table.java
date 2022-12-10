@@ -135,7 +135,7 @@ class Table implements Iterable<Row> {
         input = null;
         table = null;
         int col_num;
-        
+
         // current dir
         // String dir = System.getProperty("user.dir");
         // //System.out.println("this is the dir" + dir);
@@ -222,7 +222,6 @@ class Table implements Iterable<Row> {
     void print() {
         Iterator<Row> print_iterator = _rows.iterator();
         Row row_to_print;
-        System.out.println(this.getName());
         while (print_iterator.hasNext()) {
             row_to_print = print_iterator.next();
             int row_size = row_to_print.size();
