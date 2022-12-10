@@ -244,8 +244,11 @@ class CommandInterpreter {
     void selectStatement() {
         _input.next("select");
         Table table = selectClause();
-        table.print();
         _input.next(";");
+        
+        System.out.println("Search results:");
+
+        table.print();
     }
 
     /** Parse and execute a table definition, returning the specified

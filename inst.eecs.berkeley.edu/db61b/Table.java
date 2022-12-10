@@ -117,7 +117,7 @@ class Table implements Iterable<Row> {
         Iterator <Row> rows_in_table = this._rows.iterator();
         while (rows_in_table.hasNext()) {
             if (rows_in_table.next().equals(row)) {
-                System.out.println("Warning: Have same row already in the Table!");
+                // System.out.println("Warning: Have same row already in the Table!");
                 return false;
             }
         }
@@ -221,11 +221,11 @@ class Table implements Iterable<Row> {
     /** Print my contents on the standard output. */
     void print() {
         Iterator<Row> print_iterator = _rows.iterator();
+        print_iterator.next();
         Row row_to_print;
         while (print_iterator.hasNext()) {
             row_to_print = print_iterator.next();
             int row_size = row_to_print.size();
-            System.out.printf(" ");
             for (int i = 0; i < row_size; i = i + 1) {
                 System.out.printf(" ");
                 System.out.printf(row_to_print.get(i));
