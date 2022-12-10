@@ -5,7 +5,7 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
-// TODO(12Func): Table(String[] columnTitles, columns(), getTitle(int k), findColumn(String title), size(), add(Row row), readTable(String name), writeTable(String name), print(), select*2, equijoin.
+// TODO(12Func): Table(String[] columnTitles, columns(), getTitle(int k), findColumn(String title), size(), add(Row row), readTable(String name), writeTable(String name), print(), gett*2, equijoin.
 package db61b;
 
 import java.io.BufferedReader;
@@ -75,14 +75,23 @@ class Table implements Iterable<Row> {
         // return null;  // REPLACE WITH SOLUTION
     }
 
+    public String[] getTitles() {
+        return _columTitles;
+    }
+
     /** Return the number of the column whose title is TITLE, or -1 if
      *  there isn't one. */
     public int findColumn(String title) {
+        String name = this.getName();
         for(int i = _columTitles.length - 1; i >= 0; i -= 1) {
             if (_columTitles[i].equals(title)){
+                System.out.printf("%s is in %s %n", title, name);
                 return i;
             }
         }
+        // get table name;
+
+        System.out.printf("%s is not a valid column title in %s %n", title, name);
         return -1;
         //return -1;  // REPLACE WITH SOLUTION
     }
@@ -127,8 +136,12 @@ class Table implements Iterable<Row> {
         input = null;
         table = null;
         int col_num;
+        // current dir
+        String dir = System.getProperty("user.dir");
+        // join dir with /testing
+        String path = dir + "/testing/" + name + ".db";
         try {
-            input = new BufferedReader(new FileReader(name + ".db"));
+            input = new BufferedReader(new FileReader(path));
             String header = input.readLine();
             // System.out.println(header);
             if (header == null) {
@@ -219,10 +232,6 @@ class Table implements Iterable<Row> {
             }
             System.out.println("");
         }
-        // FILL IN
-        for(Row row : this._rows){
-            System.out.println(row.toString());
-        }
     }
 
     /** Return a new Table whose columns are COLUMNNAMES, selected from
@@ -253,26 +262,24 @@ class Table implements Iterable<Row> {
         List <Column> commonColumns1 = new ArrayList<Column>();
         List <Column> commonColumns2 = new ArrayList<Column>();
         for (String col : columnNames){
-            newColumns.add(new Column(col, this));
+            newColumns.add(new Column(col, this, table2));
         }
-        for (String colName1 : _columTitles){
-            for (String colName2 : table2._columTitles){
-                if (colName1.equals(colName2)){
-                    commonColumns1.add(new Column(colName1, this));
-                    commonColumns2.add(new Column(colName2, table2));
-                }
+
+        for (String colTitle : this._columTitles){
+            if (contain(table2.getTitles(),colTitle)){
+                commonColumns1.add(new Column(colTitle, this));
+                commonColumns2.add(new Column(colTitle, table2));
             }
         }
+
         for (Row originRow : this){
             for (Row secondRow : table2){
-                if(Condition.test(conditions, originRow, secondRow)){
-                    if (equijoin(commonColumns1, commonColumns2, secondRow, originRow)){
+                if(Condition.test(conditions, originRow, secondRow)
+                    && equijoin(commonColumns1, commonColumns2, secondRow, originRow)){
                         result.add(new Row(newColumns, originRow, secondRow));
-                    }
-                }
+                    }   
             }
         }
-        // FILL IN
         return result;
     }
 
@@ -284,7 +291,7 @@ class Table implements Iterable<Row> {
      *  from those tables. */
     private static boolean equijoin(List<Column> common1, List<Column> common2,
                                     Row row1, Row row2) {
-        for (int i = common1.size(); i >= 0; i--) {
+        for (int i = common1.size()-1; i >= 0; i--) {
             if(common1.get(i).getFrom(row1).equals(common2.get(i).getFrom(row2))){
                 return true;
             }
@@ -296,5 +303,21 @@ class Table implements Iterable<Row> {
     private List<Row> _rows = new ArrayList<Row>();
     // FILL IN
     private String[] _columTitles;
+
+// contain method of String[]
+    public boolean contain(String[] array, String target){
+        for (String s : array){
+            if (s.equals(target)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
+
+
+
+
 
