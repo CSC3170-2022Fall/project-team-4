@@ -276,7 +276,7 @@ class CommandInterpreter {
         while (_input.nextIf(",")) {
         	columnNames.add(columnName());
         }
-        System.out.println("SELECT:" + " " + columnNames);
+        // System.out.println("SELECT:" + " " + columnNames);
         _input.next("from");
         Table table1 = tableName();
         Table table2 = null;
@@ -330,13 +330,29 @@ class CommandInterpreter {
      *  token stream.  This denotes the conjunction (`and') zero
      *  or more Conditions. */
     ArrayList<Condition> conditionClause(Table... tables) {
-        return null;        // REPLACE WITH SOLUTION
+        ArrayList<Condition> result = new ArrayList<Condition>();
+        if (_input.peek().equals(";")) {
+            return null;
+        }
+        _input.next("where");
+        do {
+            result.add(condition(tables));
+        } while (_input.nextIf("and"));
+        return result;
     }
 
     /** Parse and return a Condition that applies to TABLES from the
      *  token stream. */
     Condition condition(Table... tables) {
-        return null;        // REPLACE WITH SOLUTION
+        Column col1 = new Column(columnName(), tables);
+        String relation = _input.next(Tokenizer.RELATION);
+        if (_input.nextIs(Tokenizer.LITERAL)) {
+            String val2 = literal();
+            return new Condition(col1, relation, val2);
+        } else {
+            Column entry2 = new Column(columnName(), tables);
+            return new Condition(col1, relation, entry2);
+        }    
     }
 
     /** Advance the input past the next semicolon. */
