@@ -135,11 +135,14 @@ class Table implements Iterable<Row> {
         input = null;
         table = null;
         int col_num;
+        
         // current dir
-        String dir = System.getProperty("user.dir");
-        //System.out.println("this is the dir" + dir);
-        // join dir with /testing
-        String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
+        // String dir = System.getProperty("user.dir");
+        // //System.out.println("this is the dir" + dir);
+        // // join dir with /testing
+        // String path = dir + "/testing/" + name + ".db";
+
+        String path = name + ".db";
         try {
             input = new BufferedReader(new FileReader(path));
             String header = input.readLine();
@@ -254,36 +257,29 @@ class Table implements Iterable<Row> {
      *  on all columns with identical names and satisfy CONDITIONS. */
     Table select(Table table2, List<String> columnNames,
                  List<Condition> conditions) {
-        Table result = new Table(columnNames);
-        List <Column> newColumns = new ArrayList<Column>();
-        List <Column> commonColumns1 = new ArrayList<Column>();
-        List <Column> commonColumns2 = new ArrayList<Column>();
-        for (String col : columnNames){
-            newColumns.add(new Column(col, this, table2));
-        }
+                    Table result = new Table(columnNames);
+                    ArrayList<Column> newColumns = new ArrayList<Column>(); // join columns
+                    ArrayList<Column> commonColumns1 = new ArrayList<Column>();
+                    ArrayList<Column> commonColumns2 = new ArrayList<Column>();
 
-        for (String colTitle : this._columTitles){
-            if (contain(table2.getTitles(),colTitle)){
-                commonColumns1.add(new Column(colTitle, this));
-                commonColumns2.add(new Column(colTitle, table2));
-            }
-        }
-
-        for (Row originRow : this){
-            for (Row secondRow : table2){
-                if(conditions != null){
-                    if(Condition.test(conditions, originRow, secondRow)
-                    && equijoin(commonColumns1, commonColumns2, secondRow, originRow)){
-                        result.add(new Row(newColumns, originRow, secondRow));
-                    }   
-                }
-                else{
-                    result.add(new Row(newColumns, originRow, secondRow)); 
-                }
-                
-            }
-        }
-        return result;
+                    for (String name : columnNames) {
+                        newColumns.add(new Column(name, this, table2));
+                    }
+                    for (String colTitle : this._columTitles){
+                        if (contain(table2.getTitles(),colTitle)){
+                            commonColumns1.add(new Column(colTitle, this));
+                            commonColumns2.add(new Column(colTitle, table2));
+                        }
+                    }
+                    for (Row row1 : this) {
+                        for (Row row2 : table2) {
+                            if (equijoin(commonColumns1, commonColumns2, row1, row2)
+                                && Condition.test(conditions, row1, row2)) {
+                                result.add(new Row(newColumns, row1, row2));
+                            }
+                        }
+                    }
+                    return result;
     }
 
     /** Return true if the columns COMMON1 from ROW1 and COMMON2 from
