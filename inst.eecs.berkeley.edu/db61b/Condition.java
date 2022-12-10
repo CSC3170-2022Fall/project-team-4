@@ -90,6 +90,9 @@ class Condition {
                     break;
                 case "=":
                     if (_col2 == null) {
+                        if (singlr_row.get(_col1.getColumn()) == null){
+                            return false;
+                        }
                         if (singlr_row.get(_col1.getColumn()).equals(_val2)) {
                             return true;
                         }
