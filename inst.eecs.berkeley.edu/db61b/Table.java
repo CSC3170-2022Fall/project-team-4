@@ -137,8 +137,9 @@ class Table implements Iterable<Row> {
         int col_num;
         // current dir
         String dir = System.getProperty("user.dir");
+        //System.out.println("this is the dir" + dir);
         // join dir with /testing
-        String path = dir + "/testing/" + name + ".db";
+        String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
         try {
             input = new BufferedReader(new FileReader(path));
             String header = input.readLine();
@@ -243,6 +244,7 @@ class Table implements Iterable<Row> {
             if(Condition.test(conditions, originRow)){
                 result.add(new Row(newColumns, originRow));
             }
+            
         }
         return result;
     }
@@ -269,10 +271,16 @@ class Table implements Iterable<Row> {
 
         for (Row originRow : this){
             for (Row secondRow : table2){
-                if(Condition.test(conditions, originRow, secondRow)
+                if(conditions != null){
+                    if(Condition.test(conditions, originRow, secondRow)
                     && equijoin(commonColumns1, commonColumns2, secondRow, originRow)){
                         result.add(new Row(newColumns, originRow, secondRow));
                     }   
+                }
+                else{
+                    result.add(new Row(newColumns, originRow, secondRow)); 
+                }
+                
             }
         }
         return result;
