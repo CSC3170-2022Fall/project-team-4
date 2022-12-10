@@ -42,6 +42,17 @@ public class TestTable {
     }
 
     @Test
+    public void testTableMultiply() {
+        System.out.println("testTableInnerJoin():");
+        Table t1 = Table.readTable("inst.eecs.berkeley.edu/testing/students");
+        Table t2 = Table.readTable("inst.eecs.berkeley.edu/testing/enrolled");
+        Table t3 = t1.multiply(t2);
+        t3.print();
+        // Make sure you terminal start from "/project-team-4"
+        // Or you will can not find the file from relative path.
+    }
+
+    @Test
     public void testTableWrite() {
         System.out.println("testTableRead():");
         Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");

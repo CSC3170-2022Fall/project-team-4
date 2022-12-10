@@ -159,6 +159,9 @@ class CommandInterpreter {
         case "innerjoin":
             innerJoin();
             break;
+        case "multiply":
+            crossMultiply();
+            break;
         default:
             throw error("unrecognizable command");
         }
@@ -184,10 +187,21 @@ class CommandInterpreter {
         String name = name();
         Table t3 = t1.innerjoin(t2);
         _database.put(name, t3);
-        System.out.println("Succcesfully joined them ");
+        System.out.println("Succcesfully joined tables ");
         _input.next(";");
+    }
 
-
+    void crossMultiply(){
+        _input.next("multiply");
+        Table t1 = tableName();
+        _input.next(",");
+        Table t2 = tableName();
+        _input.next("as");
+        String name = name();
+        Table t3 = t1.multiply(t2);
+        _database.put(name, t3);
+        System.out.println("Succcesfully multiplied tables ");
+        _input.next(";");
     }
 
     /** Parse and execute an exit or quit statement. Actually does nothing

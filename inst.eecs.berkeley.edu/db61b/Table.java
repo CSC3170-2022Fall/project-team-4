@@ -342,6 +342,43 @@ class Table implements Iterable<Row> {
         return result;
     }
 
+    Table multiply(Table table2){
+        ArrayList<String> all_columns = new ArrayList<String>();
+        ArrayList<Column> newColumns = new ArrayList<Column>(); // join columns
+
+        for(String column_titles:this._columTitles){
+            all_columns.add(column_titles);
+        }
+        for(String column_title:table2.getTitles()){
+            if(!all_columns.contains(column_title)){
+                all_columns.add(column_title);
+            }
+        }
+
+        Table result = new Table(all_columns);
+
+        for (String name : all_columns) {
+            newColumns.add(new Column(name, this, table2));
+        }
+        int i = 0;
+        
+        for (Row row1 : this) {
+            int j = 0;
+            if (i == 0 ){
+                i+= 1;
+                continue;
+            }
+            for (Row row2 : table2) {
+                if(j == 0){
+                    j+= 1;
+                    continue;
+                }
+                result.add(new Row(newColumns, row1, row2)); 
+            }
+        }
+        return result;
+    }
+
     /** Return true if the columns COMMON1 from ROW1 and COMMON2 from
      *  ROW2 all have identical values.  Assumes that COMMON1 and
      *  COMMON2 have the same number of elements and the same names,
