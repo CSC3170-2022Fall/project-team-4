@@ -21,6 +21,16 @@ public class TestTable {
     }
 
     @Test
+    public void testTableSort() {
+        System.out.println("testTableSort():");
+        Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
+        t.sort("Grade");
+        t.print();
+        // Make sure you terminal start from "/project-team-4"
+        // Or you will can not find the file from relative path.
+    }
+
+    @Test
     public void testTableWrite() {
         System.out.println("testTableRead():");
         Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");

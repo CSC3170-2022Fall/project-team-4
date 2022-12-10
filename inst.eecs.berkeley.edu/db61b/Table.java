@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Collections;
 
 import static db61b.Utils.*;
 
@@ -137,12 +138,12 @@ class Table implements Iterable<Row> {
         int col_num;
 
         // current dir
-        // String dir = System.getProperty("user.dir");
+        String dir = System.getProperty("user.dir");
         // //System.out.println("this is the dir" + dir);
         // // join dir with /testing
-        // String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
+        String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
 
-        String path = name + ".db";
+        //String path = name + ".db";
         try {
             input = new BufferedReader(new FileReader(path));
             String header = input.readLine();
@@ -158,7 +159,7 @@ class Table implements Iterable<Row> {
             while ((new_row = input.readLine()) != null) {
                 String[] new_row_split = new_row.split(",");
                 if (new_row_split.length != col_num) {
-                    throw error("data with wrong format in the %s.db", name);
+                    throw error("data with wrong format in the %s.db",name);
                 }
                 Row new_row_add = new Row(new_row_split);
                 // table._rows.add(new_row_add);    // This line can't delete same row in .db file
@@ -231,6 +232,21 @@ class Table implements Iterable<Row> {
                 System.out.printf(row_to_print.get(i));
             }
             System.out.println("");
+        }
+    }
+
+    void sort(String column){
+        System.out.println("Sort is called");
+        int original_size = this.size();
+        for (int i = 1;i < original_size - 1; i = i + 1){
+            for(int j = i + 1; j < original_size; j = j + 1){
+                //System.out.println("i plus j =" + i + j);
+                //System.out.println("size = " + this.size());
+                if(Double.parseDouble((this._rows.get(i)).get(this.findColumn(column))) > Double.parseDouble((this._rows.get(j)).get(this.findColumn(column)))){
+                    System.out.println("Swap was made");
+                    Collections.swap(this._rows,i,j);
+                }
+            }
         }
     }
 
