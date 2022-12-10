@@ -138,12 +138,12 @@ class Table implements Iterable<Row> {
         int col_num;
 
         // current dir
-        String dir = System.getProperty("user.dir");
+        //String dir = System.getProperty("user.dir");
         // //System.out.println("this is the dir" + dir);
         // // join dir with /testing
-        String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
+        //String path = dir + "/inst.eecs.berkeley.edu/testing/" + name + ".db";
 
-        //String path = name + ".db";
+        String path = name + ".db";
         try {
             input = new BufferedReader(new FileReader(path));
             String header = input.readLine();
