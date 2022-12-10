@@ -24,7 +24,7 @@ public class TestTable {
     public void testTableSort() {
         System.out.println("testTableSort():");
         Table t = Table.readTable("inst.eecs.berkeley.edu/testing/testinput");
-        t.sort("Grade");
+        t.sort("Grade","asc");
         t.print();
         // Make sure you terminal start from "/project-team-4"
         // Or you will can not find the file from relative path.

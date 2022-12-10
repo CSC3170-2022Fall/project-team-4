@@ -235,18 +235,27 @@ class Table implements Iterable<Row> {
         }
     }
 
-    void sort(String column){
+    void sort(String column,String direction){
         System.out.println("Sort is called");
         int original_size = this.size();
-        for (int i = 1;i < original_size - 1; i = i + 1){
-            for(int j = i + 1; j < original_size; j = j + 1){
-                //System.out.println("i plus j =" + i + j);
-                //System.out.println("size = " + this.size());
-                if(Double.parseDouble((this._rows.get(i)).get(this.findColumn(column))) > Double.parseDouble((this._rows.get(j)).get(this.findColumn(column)))){
-                    System.out.println("Swap was made");
-                    Collections.swap(this._rows,i,j);
+        if(direction.equals("asc")){
+            for (int i = 1;i < original_size - 1; i = i + 1){
+                for(int j = i + 1; j < original_size; j = j + 1){
+                    if(Double.parseDouble((this._rows.get(i)).get(this.findColumn(column))) > Double.parseDouble((this._rows.get(j)).get(this.findColumn(column)))){
+                        Collections.swap(this._rows,i,j);
+                    }
                 }
             }
+        }
+        else{
+            for (int i = 1;i < original_size - 1; i = i + 1){
+                for(int j = i + 1; j < original_size; j = j + 1){
+                    if(Double.parseDouble((this._rows.get(i)).get(this.findColumn(column))) < Double.parseDouble((this._rows.get(j)).get(this.findColumn(column)))){
+                        Collections.swap(this._rows,i,j);
+                    }
+                }
+            }
+
         }
     }
 

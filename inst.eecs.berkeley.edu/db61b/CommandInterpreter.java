@@ -294,6 +294,12 @@ class CommandInterpreter {
         else {
         	result = table1.select(table2, columnNames, conditionClause(table1, table2));
         }
+
+        if(_input.nextIf("orderby")){
+            String col_order_by = columnName();
+            String direction = name();
+            result.sort(col_order_by,direction);
+        }
         return result;
 
     }
