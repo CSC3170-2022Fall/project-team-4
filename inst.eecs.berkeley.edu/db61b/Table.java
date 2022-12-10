@@ -85,15 +85,14 @@ class Table implements Iterable<Row> {
         String name = this.getName();
         for(int i = _columTitles.length - 1; i >= 0; i -= 1) {
             if (_columTitles[i].equals(title)){
-                System.out.printf("%s is in %s %n", title, name);
+                // System.out.printf("%s is in %s %n", title, name);
                 return i;
             }
         }
         // get table name;
 
-        System.out.printf("%s is not a valid column title in %s %n", title, name);
+        // System.out.printf("%s is not a valid column title in %s %n", title, name);
         return -1;
-        //return -1;  // REPLACE WITH SOLUTION
     }
 
     /** Return the number of Rows in this table. */
@@ -219,10 +218,8 @@ class Table implements Iterable<Row> {
     void print() {
         Iterator<Row> print_iterator = _rows.iterator();
         Row row_to_print;
-        // int index = 0;
+        System.out.println(this.getName());
         while (print_iterator.hasNext()) {
-            // index = index + 1;
-            // System.out.printf("%d",index);
             row_to_print = print_iterator.next();
             int row_size = row_to_print.size();
             System.out.printf(" ");
@@ -238,13 +235,11 @@ class Table implements Iterable<Row> {
      *  rows of this table that satisfy CONDITIONS. */
     Table select(List<String> columnNames, List<Condition> conditions) {
         Table result = new Table(columnNames);
-        // FILL IN
         List <Column> newColumns = new ArrayList<Column>();
         for (String col : columnNames){
             newColumns.add(new Column(col, this));
         }
-        // for (Row originRow : this._rows){
-        for (Row originRow : _rows.subList(1, _rows.size())){
+        for (Row originRow : this){
             if(Condition.test(conditions, originRow)){
                 result.add(new Row(newColumns, originRow));
             }

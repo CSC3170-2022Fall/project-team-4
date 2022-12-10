@@ -119,6 +119,9 @@ class Condition {
 
     /** Return true iff ROWS satisfies all CONDITIONS. */
     static boolean test(List<Condition> conditions, Row... rows) {
+        if (conditions == null) {
+            return true;
+        }
         for (Condition cond : conditions) {
             if (!cond.test(rows)) {
                 return false;
