@@ -1,9 +1,12 @@
 package com.example.gui_dbms;
 import dbms.Database;
+import dbms.Row;
 import dbms.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static dbms.Utils.error;
 
 public class DatabaseCaller {
     private Database _database;
@@ -43,11 +46,43 @@ public class DatabaseCaller {
             result = table1.select(table2, cols, null);
         }
 
-//        if(_input.nextIf("orderby")){
-//            String col_order_by = columnName();
-//            String direction = name();
-//            result.sort(col_order_by,direction);
-//        }
         return result;
+    }
+
+    public void saveTable(String name, Table table) {
+
+        _database.put(name, table);
+
+    }
+
+
+
+    public void createTable(String name, ArrayList<String> fields) {
+        Table newTable = new Table(fields);
+        _database.put(name, newTable);
+    }
+
+    public void innerJoin(String t1, String t2, String newTable) {
+        Table table1 = _database.get(t1);
+        Table table2 = _database.get(t2);
+        Table t3 = table1.innerjoin(table2);
+        _database.put(newTable, t3);
+    }
+
+    public void multiply(String t1, String t2, String newTable) {
+        Table table1 = _database.get(t1);
+        Table table2 = _database.get(t2);
+        Table t3 = table1.multiply(table2);
+        _database.put(newTable, t3);
+    }
+
+    public void insert(String[] values, String tableName) {
+        Row row = new Row(values);
+        // System.out.printf("inserting %s into %s%n", values, table.getName());
+        Table table = _database.get(tableName);
+        boolean success = table.add(row);
+        if (!success) {
+            throw error("insertion failed");
+        }
     }
 }

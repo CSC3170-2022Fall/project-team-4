@@ -45,7 +45,7 @@ public class Table implements Iterable<Row> {
     }
 
     /** A new Table whose columns are give by COLUMNTITLES. */
-    Table(List<String> columnTitles) {
+    public Table(List<String> columnTitles) {
         this(columnTitles.toArray(new String[columnTitles.size()]));
     }
 
@@ -181,13 +181,13 @@ public class Table implements Iterable<Row> {
 
     /** Write the contents of TABLE into the file NAME.db. Any I/O errors
      *  cause a DBException. */
-    void writeTable(String name) {
+    public void writeTable(String name) {
         PrintStream output;
         output = null;
         try {
             String sep;
             sep = "";
-            output = new PrintStream(name + ".db");
+            output = new PrintStream("testing\\" + name + ".db");
             // FILL THIS IN
             Row title = new Row(_columTitles);
             int title_size = title.size();
@@ -303,7 +303,7 @@ public class Table implements Iterable<Row> {
                     return result;
     }
 
-    Table innerjoin(Table table2){
+    public Table innerjoin(Table table2){
         ArrayList<String> all_columns = new ArrayList<String>();
         ArrayList<Column> newColumns = new ArrayList<Column>(); // join columns
         ArrayList<Column> commonColumns1 = new ArrayList<Column>();
@@ -339,7 +339,7 @@ public class Table implements Iterable<Row> {
         return result;
     }
 
-    Table multiply(Table table2){
+    public Table multiply(Table table2){
         ArrayList<String> all_columns = new ArrayList<String>();
         ArrayList<Column> newColumns = new ArrayList<Column>(); // join columns
 

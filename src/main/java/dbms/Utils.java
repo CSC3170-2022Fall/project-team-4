@@ -21,7 +21,7 @@ public class Utils {
 
     /** Return a DBException whose message is formed from S and ARGS as for
      *  String.format. */
-    static DBException error(String s, Object ... args) {
+    public static DBException error(String s, Object... args) {
         return new DBException(format(s, args));
     }
 

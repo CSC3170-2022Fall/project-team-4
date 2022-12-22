@@ -18,7 +18,7 @@ import java.util.List;
 public class Row {
     /** A Row whose column values are DATA.  The array DATA must not be altered
      *  subsequently. */
-    Row(String[] data) {
+    public Row(String[] data) {
         _data = data;
     }
 
