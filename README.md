@@ -45,7 +45,18 @@ Once the simple database is completed and fully functional, we would redo assign
 # Program Design 
 Give explanation for the repository structure (may use an independent paragraph in the profile and/or in each sub-directories, or describe it in some section like Program Design)
 Provide brief and explicit explanation and hyper link for any important and descriptive file (e.g. your TODO list).
+
 # Functionality Implementation
+For the demonstration of the implementation of our database system we will use our previous assignment 2 that we have done 
+on SQL and try to run those queries here on our databse system instead. We have made the required databases and chose a few
+of the queries to test on our database system. We cannot implement all the 15 queries from assignment 2 because it would take
+too long but also mainly because some of those queries requires complex functionalities that our database system simply dont 
+have yet.
+
+To implement the queries we added some additional functionalities to our database systems which are:
+- order by
+- inner join (natural join)
+- table multiplication
 
 # Testing Results (Optional)
 # Difficulty Encountered & Solutions (Optional)
