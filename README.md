@@ -44,7 +44,71 @@ Once the simple database is completed and fully functional, we would redo assign
 
 # Program Design 
 Give explanation for the repository structure (may use an independent paragraph in the profile and/or in each sub-directories, or describe it in some section like Program Design)
-Provide brief and explicit explanation and hyper link for any important and descriptive file (e.g. your TODO list).
+Provide brief and explicit explanation and hyper link for any important and descriptive file (e.g. your TODO list).****
+## Directory Structure
+```shell
+inst.eecs.berkeley.edu
+├── Makefile
+├── ReadMe
+├── db61b
+│   ├── Column.java
+│   ├── CommandInterpreter.java
+│   ├── Condition.java
+│   ├── DBException.java
+│   ├── Database.java
+│   ├── DatabaseTest.java
+│   ├── Main.java
+│   ├── Makefile
+│   ├── Row.java
+│   ├── Table.java
+│   ├── TestCondition.java
+│   ├── TestTable.java
+│   ├── TestTemplate.java
+│   ├── Tokenizer.java
+│   ├── Utils.java
+│   └── lib
+│       ├── hamcrest-core-1.3.jar
+│       └── junit-4.13.2.jar
+├── robots.txt
+├── staff-version
+└── testing
+    ├── Makefile
+    ├── blank.db
+    ├── countries.db
+    ├── departments.db
+    ├── employees.db
+    ├── enrolled.db
+    ├── job_history.db
+    ├── jobs.db
+    ├── locations.db
+    ├── regions.db
+    ├── schedule.db
+    ├── students.db
+    ├── test1.in
+    ├── test1.out
+    ├── test2.in
+    ├── test2.out
+    ├── tester.py
+    ├── testing.py
+    └── testinput.db
+```
+
+`db61b` is the directory that our team works on. It contains all the files that we use to implement the database managemnet system. 
+`testing` is the directory that includes testing files for the database system.
+## Design Overview
+The data management system is designed with mainly serveral steps. 
+- First, command interpreter will read the input from the user and tokenize it.  
+    - `CommendInterpreter.java`: reading the input from the user and calling the corresponding functions in the database class. 
+    The basic commends including: `load`, `store`, `create`, `insert`, `print`, `select`, `help`, `exit`. 
+
+- Then, the command interpreter will call the database to execute the command, and the database will call the corresponding functions in the table class. 
+    - `Database.java`: calling the corresponding functions in the table class. 
+    - `Table.java`: calling the corresponding functions in the row class. 
+    - `Row.java`: storing the data in the row.
+    - `Condition.java`: checking the condition for the select command.
+    - `Column.java`: storing the data in the column.
+
+In the next section, we will present functions' implementation in details.
 
 # Functionality Implementation
 For the demonstration of the implementation of our database system we will use our previous assignment 2 that we have done 
