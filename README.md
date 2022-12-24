@@ -105,7 +105,7 @@ Test Example: `create table enrolled2 as
 
 ## Extra Works
 
-### **Partial Commends Support of Assignment 2**
+### **Additional Command Support for Assignment 2**
 
 For the demonstration of the implementation of our database system we will use our previous assignment 2 that we have done 
 on SQL and try to run those queries here on our databse system instead. We have made the required databases and chose a few
@@ -117,6 +117,12 @@ To implement the queries we added some additional functionalities to our databas
 - order by
 - inner join (natural join)
 - table multiplication
+
+For the demonstration we will run 4 queries from assignment 2 on our database system.
+QUERY 2  : Show the first_name and last_name of all employees
+QUERY 3  : Write a query to show the employee_id and the salary of all employees in ascending order of salary
+QUERY 7  : Write a query that selects employee_id, and phone_number of those employees who are indepartments 20 or 100
+QUERY 16 : Write a query to get the department_id, department_name, and manager's first_name for departments
 
 
 ### **GUI Implementation**
