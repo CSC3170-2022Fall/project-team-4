@@ -120,8 +120,29 @@ To implement the queries we added some additional functionalities to our databas
 
 
 ### **GUI Implementation**
+Javafx was used to implement the GUI. It is in another branch, with_gui. The main implementation is in src/main/java/com/example/gui_dbms/OperationWindow.java and the entrance of the program is HelloApplication.java under the same path. DatabaseCaller.java is the class that actually calls the functionalities of the implemented database system. 
+The functionalities that the GUI covers includes: 
+- loading tables from .db files
+- creating a table by inputting field names
+- creating tables by selecting column(s) from an existing table 
+- inserting a row into an existing table
+
+* export a table as a .db file. 
+
+A different IDE, Intellij idea, was used to implement the GUI. Since the implementer of this part did not figure out how to fix the dependency problems when using VSCODE to run it, the followings are how to run it with intellij idea:
+
+Open the project (branch with_gui) with intellij idea. 
+
+If it shows any problems with junit or javafx when you try building it, go to File > Project Structure, click on the `+`, copy the path of the library and save. For example, under src\main\java\dbms\lib there is junit.jar. For Javafx, if you use Windows, you can download the lib here, https://download2.gluonhq.com/openjfx/19/openjfx-19_windows-x64_bin-sdk.zip
+If you still cannot solve the dependency problem you can google it or contact 119010297. 
+
+Run HelloApplication.java and you should see a window appear. 
 
 # Testing Results (Optional)
+
+**GUI**
+![GUI](./screenshot/gui.png)
+
 # Difficulty Encountered & Solutions (Optional)
 
 
