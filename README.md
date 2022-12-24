@@ -119,10 +119,10 @@ To implement the queries we added some additional functionalities to our databas
 - table multiplication
 
 For the demonstration we will run 4 queries from assignment 2 on our database system.
-QUERY 2  : Show the first_name and last_name of all employees
-QUERY 3  : Write a query to show the employee_id and the salary of all employees in ascending order of salary
-QUERY 7  : Write a query that selects employee_id, and phone_number of those employees who are indepartments 20 or 100
-QUERY 16 : Write a query to get the department_id, department_name, and manager's first_name for departments
+- QUERY 2  : Show the first_name and last_name of all employees
+- QUERY 3  : Write a query to show the employee_id and the salary of all employees in ascending order of salary
+- QUERY 7  : Write a query that selects employee_id, and phone_number of those employees who are indepartments 20 or 100
+- QUERY 16 : Write a query to get the department_id, department_name, and manager's first_name for departments
 
 
 ### **GUI Implementation**
