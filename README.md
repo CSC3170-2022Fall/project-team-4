@@ -43,74 +43,70 @@ Once the simple database is completed and fully functional, we would redo assign
 
 
 # Program Design 
-Give explanation for the repository structure (may use an independent paragraph in the profile and/or in each sub-directories, or describe it in some section like Program Design)
-Provide brief and explicit explanation and hyper link for any important and descriptive file (e.g. your TODO list).****
+<!-- Give explanation for the repository structure (may use an independent paragraph in the profile and/or in each sub-directories, or describe it in some section like Program Design)
+Provide brief and explicit explanation and hyper link for any important and descriptive file (e.g. your TODO list).**** -->
 ## Directory Structure
-```shell
-inst.eecs.berkeley.edu
-├── Makefile
-├── ReadMe
-├── db61b
-│   ├── Column.java
-│   ├── CommandInterpreter.java
-│   ├── Condition.java
-│   ├── DBException.java
-│   ├── Database.java
-│   ├── DatabaseTest.java
-│   ├── Main.java
-│   ├── Makefile
-│   ├── Row.java
-│   ├── Table.java
-│   ├── TestCondition.java
-│   ├── TestTable.java
-│   ├── TestTemplate.java
-│   ├── Tokenizer.java
-│   ├── Utils.java
-│   └── lib
-│       ├── hamcrest-core-1.3.jar
-│       └── junit-4.13.2.jar
-├── robots.txt
-├── staff-version
-└── testing
-    ├── Makefile
-    ├── blank.db
-    ├── countries.db
-    ├── departments.db
-    ├── employees.db
-    ├── enrolled.db
-    ├── job_history.db
-    ├── jobs.db
-    ├── locations.db
-    ├── regions.db
-    ├── schedule.db
-    ├── students.db
-    ├── test1.in
-    ├── test1.out
-    ├── test2.in
-    ├── test2.out
-    ├── tester.py
-    ├── testing.py
-    └── testinput.db
-```
-
-`db61b` is the directory that our team works on. It contains all the files that we use to implement the database managemnet system. 
-`testing` is the directory that includes testing files for the database system.
+The skeleton code provided by UCB is in the `inst.eecs.berkeley.edu
+` folder, the **DIRECTORY STRUCTURE** and **TODO LIST** is described in the [Project](https://github.com/CSC3170-2022Fall/project-team-4/tree/main/inst.eecs.berkeley.edu). 
+- `db61b` is the directory that our team works on. It contains all the files that we use to implement the database managemnet system. 
+- `testing` is the directory that includes testing files for the database system.
 ## Design Overview
-The data management system is designed with mainly serveral steps. 
-- First, command interpreter will read the input from the user and tokenize it.  
+The data management system is designed with mainly following steps. 
+- First, command interpreter will read the input from the user and tokenize it. The intruction format of the DBMS refers to the [project website](https://inst.eecs.berkeley.edu/~cs61b/fa14/hw/proj1.pdf).
     - `CommendInterpreter.java`: reading the input from the user and calling the corresponding functions in the database class. 
     The basic commends including: `load`, `store`, `create`, `insert`, `print`, `select`, `help`, `exit`. 
 
 - Then, the command interpreter will call the database to execute the command, and the database will call the corresponding functions in the table class. 
-    - `Database.java`: calling the corresponding functions in the table class. 
+    - `Database.java`: represents a database, which is a collection of tables.
     - `Table.java`: calling the corresponding functions in the row class. 
     - `Row.java`: storing the data in the row.
-    - `Condition.java`: checking the condition for the select command.
+    - `Condition.java`:  represents a condition that can be used to filter rows from a table.
     - `Column.java`: storing the data in the column.
 
 In the next section, we will present functions' implementation in details.
 
 # Functionality Implementation
+
+
+**Database**: The "Database" initializr a HashMap object to store the tables. The `keys` in the HashMap are the *names* of the tables and the *values* are the *Table objects*.
+- `get` returns the *Table object* stored in the database with given `name`. 
+- `put` adds the given `table` to the database with given `name`.
+
+**Load Table**  
+Test Example `load students;`
+`Table.readTable (name)` reads a table file `students.db` with the given filename and returns a  `Table` object. Then, the database uses `put` to add the table to the database with the given name.
+
+**Print Table**     
+Test Example: `print students;`
+
+The `Database.get(name)` first retrieves the table specified by the name given in the input. Then `Table.print()` iterates through the rows in the table and prints each element in the row on a separate line.
+
+**Select**  
+Test Example: `select SID, Firstname from students
+     where Lastname = 'Chan';`
+
+The `CommandInterpreter.selectClause()` firstly parse and execute a `SELECT` statement in a database. It takes in a token stream and returns a Table object for query result. This method can be appiled to one or two tables (joint selection).
+
+**Insert**  
+<!-- TODO: -->
+Test Example: `insert into enrolled values '102', '22100', 'B+';`
+
+**Creat Table**  
+<!-- TODO -->
+ `<create statement> ::= create table <table name> <table definition> ;`
+Test Example: `create table enrolled2 as
+  select SID
+     from enrolled, schedule 
+     where Dept = 'EECS' and Num = '61A';`
+
+**Store Database**      
+<!-- TODO -->
+
+
+## Extra Works
+
+### **Partial Commends Support of Assignment 2**
+
 For the demonstration of the implementation of our database system we will use our previous assignment 2 that we have done 
 on SQL and try to run those queries here on our databse system instead. We have made the required databases and chose a few
 of the queries to test on our database system. We cannot implement all the 15 queries from assignment 2 because it would take
@@ -121,6 +117,9 @@ To implement the queries we added some additional functionalities to our databas
 - order by
 - inner join (natural join)
 - table multiplication
+
+
+### **GUI Implementation**
 
 # Testing Results (Optional)
 # Difficulty Encountered & Solutions (Optional)
