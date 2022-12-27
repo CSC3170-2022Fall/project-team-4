@@ -91,6 +91,8 @@ The `CommandInterpreter.selectClause()` firstly parse and execute a `SELECT` sta
 <!-- TODO: -->
 Test Example: `insert into enrolled values '102', '22100', 'B+';`
 
+The `CommandInterpreter.insertStatement()` firstly parse and generate a Row data from the Insert command. Then it will try to insert this Row into the table using ` Table.add()`. The program will get the return from ` Table.add()` and output whether program successfully insert the value.
+
 **Creat Table**  
 <!-- TODO -->
  `<create statement> ::= create table <table name> <table definition> ;`
@@ -99,9 +101,19 @@ Test Example: `create table enrolled2 as
      from enrolled, schedule 
      where Dept = 'EECS' and Num = '61A';`
 
+The `CommandInterpreter.createStatement()` firstly parse and generate a Table container from the Create command using `CommandInterpreter.tableDefinition()`. Then it will try to parse the command and make sure the data stored in the table. After that, the database will put the table inside with `Database.put()`.
+
 **Store Database**      
 <!-- TODO -->
 
+The `CommandInterpreter.storeStatement()` will call the function `Table.writeTable(name)`. This function work like the `Table.print()` and the difference is that `Table.writeTable(name)` will output the stream to a file.
+
+**Work Flow**
+
+The main work flow of the command line version:
+-> `Class`:`CommandInterpreter` parse the command line 
+-> Call function from other `Class` with Input in command 
+-> Gather the return to `Class`:`CommandInterpreter` and output in command line.
 
 ## Extra Works
 
