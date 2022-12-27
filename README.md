@@ -53,8 +53,8 @@ The skeleton code provided by UCB is in the `inst.eecs.berkeley.edu
 ## Design Overview
 The data management system is designed with mainly following steps. 
 - First, command interpreter will read the input from the user and tokenize it. The intruction format of the DBMS refers to the [project website](https://inst.eecs.berkeley.edu/~cs61b/fa14/hw/proj1.pdf).
-    - `CommendInterpreter.java`: reading the input from the user and calling the corresponding functions in the database class. 
-    The basic commends including: `load`, `store`, `create`, `insert`, `print`, `select`, `help`, `exit`. 
+    - `CommandInterpreter.java`: reading the input from the user and calling the corresponding functions in the database class. 
+    The basic commands including: `load`, `store`, `create`, `insert`, `print`, `select`, `help`, `exit`. 
 
 - Then, the command interpreter will call the database to execute the command, and the database will call the corresponding functions in the table class. 
     - `Database.java`: represents a database, which is a collection of tables.
