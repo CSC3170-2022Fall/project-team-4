@@ -68,7 +68,7 @@ In the next section, we will present functions' implementation in details.
 # Functionality Implementation
 
 
-**Database**: The "Database" initializr a HashMap object to store the tables. The `keys` in the HashMap are the *names* of the tables and the *values* are the *Table objects*.
+**Database**: The "Database" initializr a HashMap object to store the tables. The `keys` in the HashMap are the *names* of the tables and the `values` are the *Table objects*.
 - `get` returns the *Table object* stored in the database with given `name`. 
 - `put` adds the given `table` to the database with given `name`.
 
