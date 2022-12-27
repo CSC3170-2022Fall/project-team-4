@@ -135,10 +135,10 @@ A different IDE, Intellij idea, was used to implement the GUI. Since the impleme
 
 Open the project (branch with_gui) with intellij idea. 
 
-If it shows any problems with junit or javafx when you try building it, go to File > Project Structure, click on the `+`, copy the path of the library and save. For example, under src\main\java\dbms\lib there is junit.jar. For Javafx, if you use Windows, you can download the lib here, https://download2.gluonhq.com/openjfx/19/openjfx-19_windows-x64_bin-sdk.zip
+If it shows any problems with junit or javafx when you try building it, go to File > Project Structure, click on the `+`, copy the path of the library and save. For example, under `src\main\java\dbms\lib` there is `junit.jar`. For Javafx, if you use Windows, you can download the lib here, https://download2.gluonhq.com/openjfx/19/openjfx-19_windows-x64_bin-sdk.zip
 If you still cannot solve the dependency problem you can google it or contact 119010297. 
 
-Run HelloApplication.java and you should see a window appear. 
+Run `HelloApplication.java` and you should see a window appear. 
 
 # Testing Results (Optional)
 
