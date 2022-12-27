@@ -122,7 +122,8 @@ For the demonstration we will run 4 queries from assignment 2 on our database sy
 
 
 ### **GUI Implementation**
-Javafx was used to implement the GUI. It is in another branch, with_gui. The main implementation is in `src/main/java/com/example/gui_dbms/OperationWindow.java` and the entrance of the program is HelloApplication.java under the same path. DatabaseCaller.java is the class that actually calls the functionalities of the implemented database system. 
+Javafx was used to implement the GUI. It is in another branch, with_gui. The main implementation is in `src/main/java/com/example/gui_dbms/OperationWindow.java` and the entrance of the program is `HelloApplication.java` under the same path. `DatabaseCaller.java` is the class that actually calls the functionalities of the implemented database system. 
+
 The functionalities that the GUI covers includes: 
 - loading tables from .db files
 - creating a table by inputting field names
