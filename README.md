@@ -143,7 +143,8 @@ Run HelloApplication.java and you should see a window appear.
 # Testing Results (Optional)
 
 **GUI**
-![Fig.1 - GUI](./screenshot/gui.png)
+
+![GUI](./screenshot/gui.png)
 
 # Difficulty Encountered & Solutions (Optional)
 
