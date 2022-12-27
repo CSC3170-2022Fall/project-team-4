@@ -141,6 +141,12 @@ If you still cannot solve the dependency problem you can google it or contact 11
 Run `HelloApplication.java` and you should see a window appear. 
 
 # Testing Results (Optional)
+**DBMS test** 
+```bash
+$ cd inst.eecs.berkeley.edu
+$ make check  # run all tests
+```
+![](./screenshot/test_out.png)
 
 **GUI**
 
