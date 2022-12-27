@@ -129,8 +129,7 @@ The functionalities that the GUI covers includes:
 - creating a table by inputting field names
 - creating tables by selecting column(s) from an existing table 
 - inserting a row into an existing table
-
-* export a table as a .db file. 
+- export a table as a .db file. 
 
 A different IDE, Intellij idea, was used to implement the GUI. Since the implementer of this part did not figure out how to fix the dependency problems when using VSCODE to run it, the followings are how to run it with intellij idea:
 
@@ -144,7 +143,7 @@ Run HelloApplication.java and you should see a window appear.
 # Testing Results (Optional)
 
 **GUI**
-![GUI](./screenshot/gui.png)
+![Fig.1 - GUI](./screenshot/gui.png)
 
 # Difficulty Encountered & Solutions (Optional)
 
