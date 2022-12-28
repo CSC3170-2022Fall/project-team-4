@@ -116,7 +116,7 @@ The `CommandInterpreter.storeStatement()` will call the function `Table.writeTab
 ## Extra Works
 
 ### **Additional Command Support for Assignment 2**
-(Details for assignment 2 can be found in as2_description) [label](as2-description.md)
+(Details for assignment 2 can be found in [as2_description](as2-description.md))
 
 For the demonstration of the implementation of our database system, we will use the previous assignment 2 that we have done on SQL and try to run those queries here on our database system instead. We have made the required databases and chosen a few queries to test on our database system. We have yet to implement all 15 queries from assignment 2, because our database has limitations in implementing all the complex functionalities.
 
