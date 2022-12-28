@@ -131,7 +131,7 @@ For the demonstration we will run 4 queries from assignment 2 on our database sy
 - QUERY 16 : Write a query to get the department_id, department_name, and manager's first_name for departments
 
 
-### **GUI Implementation**
+### **GUI Implementation ([brach `with_gui`](https://github.com/CSC3170-2022Fall/project-team-4/tree/with_gui))**
 Javafx was used to implement the GUI. It is in another branch, with_gui. The main implementation is in `src/main/java/com/example/gui_dbms/OperationWindow.java` and the entrance of the program is `HelloApplication.java` under the same path. `DatabaseCaller.java` is the class that actually calls the functionalities of the implemented database system. 
 
 The functionalities that the GUI covers includes: 
