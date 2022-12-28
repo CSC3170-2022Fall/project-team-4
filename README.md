@@ -182,4 +182,14 @@ $ make check  # run all tests
 
 
 # Conclusion
-Add a paragraph about the actual contribution (not the originally designed one) of each teammate. May add one-sentence personal sentiment in this table by each member.
+In conclusion, we constructed a simple Database Management System in Java and verified its functionalities through test cases. In order to make increase the application scene of our DBMS, we add some extra functionalities to deal with the huge data in Assignment 2. Moreover, we designed a front-end webpage for the database with the GUI connecting the backend to further improve the user experience.
+
+Contribution:
+|Student ID | Name | Contribution|
+| ---------- | ------------ | ------------------------- | 
+|119010256  | 邵佳琪 | Finish part of the UCB code & report |
+| 119010022  | 陈诺涵       | Finish part of the presentation|
+| 119010434  | 张启航       | Finish part of the UCB code & report|
+| 120040023  | Jefferson    | Implementation of A2, part of the presentation & part of the report|
+| 119010297  | 王景仪       | Implementation of GUI & part of the report|
+| 119010442  | 张天琦       | Finish part of the UCB code & report|
