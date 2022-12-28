@@ -196,6 +196,6 @@ In conclusion, we constructed a simple Database Management System in Java and ve
 
 
 # Presentation
-- Slides \[[pptx](https://cuhko365-my.sharepoint.com/:p:/g/personal/119010022_link_cuhk_edu_cn/EWfT93WzJE1Ls0dUnPgqaugBlO333vkUnvgZx0VBo2YEmg?e=7yB20c)\]\[[pdf](https://cuhko365-my.sharepoint.com/:b:/g/personal/119010022_link_cuhk_edu_cn/EflA7QqjAZFDplYqlvpYTgsBSlPItcAnzVx0OHLYgIN9Sw?e=BtAHJA)\]
+- Slides \[[pptx](https://cuhko365-my.sharepoint.com/:p:/g/personal/119010022_link_cuhk_edu_cn/EWfT93WzJE1Ls0dUnPgqaugBlO333vkUnvgZx0VBo2YEmg?e=7yB20c)\]\[[pdf](https://cuhko365-my.sharepoint.com/:b:/g/personal/119010022_link_cuhk_edu_cn/EedD1gLz6sFKgOHDemQtH4gBQuFOQ-BfZtusHQSVFV6FZw?e=hajzw1)\]
 - Video \[[mp4](https://cuhko365-my.sharepoint.com/:v:/g/personal/119010022_link_cuhk_edu_cn/EXa2ps8-KkNDkZKRj1hg3ZwBqsfhW-JIVqaBrwSW2rvBzw?e=Ru00sP)\]
 
