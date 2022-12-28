@@ -58,24 +58,24 @@ testing                 Subdirectory holding files for integration testing:
 
 # TODO LIST
 
-[x] Throughout the project, write test cases (in fact, do this every chance you get). Among other things, writing test cases gets you to understand the specification better. When- ever you find an input that breaks your program, make sure you capture it in a test case.
+- [x] Throughout the project, write test cases (in fact, do this every chance you get). Among other things, writing test cases gets you to understand the specification better. When- ever you find an input that breaks your program, make sure you capture it in a test case.
 
-[x] Get the printing of prompts, handling of comments, and the ‘quit’ and exit’ commands, and the end of input to work. If you’re using our skeleton, this step has already been completed for you.
+- [x] Get the printing of prompts, handling of comments, and the ‘quit’ and exit’ commands, and the end of input to work. If you’re using our skeleton, this step has already been completed for you.
 
-[x] Implement the Row class, except for the Row(List<Column> columns, Row... rows) constructor, which you should save for later. Make sure to write tests for the Row class. See lab5 for examples of how to test components of a package. Consider adding a command to your makefile that runs your unit tests, using the optional part of lab5 as a guide.
+- [x] Implement the Row class, except for the Row(List<Column> columns, Row... rows) constructor, which you should save for later. Make sure to write tests for the Row class. See lab5 for examples of how to test components of a package. Consider adding a command to your makefile that runs your unit tests, using the optional part of lab5 as a guide.
 
-[x] Implement the parts of the Table class needed to create a new Table, add a Row to it, and print an entire Table.
+- [x] Implement the parts of the Table class needed to create a new Table, add a Row to it, and print an entire Table.
 
-[x] Implement the Database class.
+- [x] Implement the Database class.
 
-[x] Implementinsertandload.
+- [x] Implementinsertandload.
 
-[x] Implement the kind of select that takes a single table and has no conditions.
+- [x] Implement the kind of select that takes a single table and has no conditions.
 
-[x] Implement the Row(List<Column> columns, Row... rows) constructor.
+- [x] Implement the Row(List<Column> columns, Row... rows) constructor.
 
-[x] Now get single-table select with conditions to work.
+- [x] Now get single-table select with conditions to work.
 
-[x] Finally, work on the two-table variety of select.
+- [x] Finally, work on the two-table variety of select.
 
-[x] In the above steps, as you decide on implementation strategies and the data repre- sentations you will use, write them down in your internal documentation. When you introduce new methods or classes, write the comments first.
+- [x] In the above steps, as you decide on implementation strategies and the data repre- sentations you will use, write them down in your internal documentation. When you introduce new methods or classes, write the comments first.
